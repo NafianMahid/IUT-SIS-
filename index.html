@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IUT Student Information System (SIS) — Redesign Portal</title>
+  <meta name="description" content="A modern, high-usability Student Information System (SIS) portal prototype for IUT. Features persistent sidebar, live conflict detection, academic analytics, and timetable management.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- App Container -->
+  <div id="app" class="app-root">
+
+    <!-- ========================================================================= -->
+    <!-- SCREEN 1: LOGIN SCREEN                                                    -->
+    <!-- ========================================================================= -->
+    <section id="screen-login" class="screen-view active">
+      <div class="login-container">
+        <!-- Left Branding Panel (55%) -->
+        <div class="login-brand-panel">
+          <div class="brand-decorative-bg">
+            <div class="mesh-orb orb-1"></div>
+            <div class="mesh-orb orb-2"></div>
+            <div class="mesh-grid-pattern"></div>
+          </div>
+          
+          <div class="brand-content-wrapper">
+            <div class="brand-header">
+              <div class="university-crest">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="44" height="44" rx="10" fill="white" fill-opacity="0.15"/>
+                  <path d="M22 6L35 13.5V23C35 30.5 29.5 37.5 22 39.5C14.5 37.5 9 30.5 9 23V13.5L22 6Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="2"/>
+                  <path d="M22 14V30M16 20L22 14L28 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="22" cy="22" r="3" fill="#10B981"/>
+                </svg>
+              </div>
+              <div class="brand-title-group">
+                <span class="university-sub">Islamic University of Technology</span>
+                <h1 class="brand-title">Student Information System</h1>
+              </div>
+            </div>
+
+            <div class="brand-showcase">
+              <div class="academic-badge">
+                <span class="pulse-dot"></span>
+                <span>Fall 2026 Academic Portal</span>
+              </div>
+              <h2 class="showcase-headline">Next-Generation Student Experience.</h2>
+              <p class="showcase-desc">
+                Streamlined course registration with live collision prevention, transparent academic performance tracking, and instant schedule management tailored for university excellence.
+              </p>
+
+              <!-- Feature Pills -->
+              <div class="feature-pills">
+                <div class="feature-pill">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>Live Collision Shield</span>
+                </div>
+                <div class="feature-pill">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                  <span>Real-time GPA Analytics</span>
+                </div>
+                <div class="feature-pill">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  <span>Interactive Routine</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="brand-footer">
+              <div class="trust-indicator">
+                <div class="avatar-stack">
+                  <span class="avatar-mini">M</span>
+                  <span class="avatar-mini">S</span>
+                  <span class="avatar-mini">A</span>
+                </div>
+                <span>Serving 4,200+ undergraduate & graduate engineers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Form Panel (45%) -->
+        <div class="login-form-panel">
+          <div class="login-form-wrapper">
+            <!-- Theme Mode Switcher in Login -->
+            <div class="login-theme-bar">
+              <button type="button" class="btn-login-theme-toggle" id="theme-toggle-login" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                <svg class="theme-icon-sun hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <span class="theme-text-status">Dark Mode</span>
+              </button>
+            </div>
+
+            <div class="form-header">
+              <div class="mobile-crest-display">
+                <div class="mini-crest-icon">SIS</div>
+              </div>
+              <h2 class="welcome-heading">Welcome back</h2>
+              <p class="welcome-sub">Sign in to access your student portal and academic records</p>
+            </div>
+
+            <!-- Quick Demo Credentials Helper -->
+            <div class="demo-badge-bar" id="demo-badge-bar" title="Click to autofill student demo credentials">
+              <span class="badge-tag">Demo Mode</span>
+              <span class="badge-text">ID: <strong>230042144</strong> · Pass: <strong>Mahid123</strong> (Open Access)</span>
+              <button type="button" class="btn-demo-autofill" id="btn-autofill" aria-label="Autofill demo credentials">
+                Auto-fill
+              </button>
+            </div>
+
+            <!-- Validation Alert Box -->
+            <div id="login-alert" class="alert-box alert-danger hidden" role="alert">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span id="login-alert-text">Invalid student ID or password. Please try again.</span>
+            </div>
+
+            <!-- Form -->
+            <form id="login-form" novalidate>
+              <div class="form-group">
+                <label for="login-student-id">Student ID or University Email</label>
+                <div class="input-icon-wrapper">
+                  <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <input type="text" id="login-student-id" placeholder="e.g. 230042144 or any ID/name" autocomplete="username" required>
+                </div>
+                <span class="field-error-msg" id="id-error">Please enter your student ID or email.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <div class="input-icon-wrapper">
+                  <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <input type="password" id="login-password" placeholder="Enter your password" autocomplete="current-password" required>
+                  <button type="button" class="btn-toggle-password" id="btn-toggle-pwd" aria-label="Toggle password visibility">
+                    <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </div>
+                <span class="field-error-msg" id="pwd-error">Please enter your password.</span>
+              </div>
+
+              <div class="form-options-row">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="remember-me" checked>
+                  <span class="custom-checkbox"></span>
+                  <span class="checkbox-text">Remember me</span>
+                </label>
+                <a href="#" id="link-forgot-pwd" class="forgot-link">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-submit-login">
+                <span class="btn-text">Sign In</span>
+                <div class="btn-spinner hidden" id="login-spinner"></div>
+              </button>
+            </form>
+
+            <div class="divider-row">
+              <span class="divider-line"></span>
+              <span class="divider-text">or continue with</span>
+              <span class="divider-line"></span>
+            </div>
+
+            <button type="button" class="btn btn-secondary btn-block btn-sso" id="btn-sso-login">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Sign in with University SSO</span>
+            </button>
+
+            <div class="login-footer">
+              <p>Need assistance? <a href="#" id="link-helpdesk" class="helpdesk-link">Contact IT Helpdesk</a></p>
+              <span class="security-note">🔒 256-bit encrypted university connection</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- LOGGED-IN PORTAL SHELL (Sidebar + Top bar + Dynamic Main)                 -->
+    <!-- ========================================================================= -->
+    <div id="portal-shell" class="portal-shell hidden">
+      <!-- Reusable Persistent Left Sidebar -->
+      <aside class="portal-sidebar" id="portal-sidebar">
+        <!-- Sidebar Brand -->
+        <div class="sidebar-brand">
+          <div class="sidebar-logo">
+            <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+              <rect width="44" height="44" rx="10" fill="#3730A3"/>
+              <path d="M22 8L34 15V23C34 29.5 29 35.5 22 37.5C15 35.5 10 29.5 10 23V15L22 8Z" fill="#4338CA" stroke="#818CF8" stroke-width="2"/>
+              <path d="M22 15V29M17 20L22 15L27 20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="22" cy="22" r="2.5" fill="#10B981"/>
+            </svg>
+          </div>
+          <div class="sidebar-brand-text">
+            <span class="brand-name">IUT SIS</span>
+            <span class="brand-badge">STUDENT PORTAL</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="sidebar-nav" aria-label="Main Navigation">
+          <div class="nav-section-title">ACADEMIC MENU</div>
+          <ul class="nav-list">
+            <li>
+              <button type="button" class="nav-item active" data-nav="dashboard" id="nav-dashboard">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                <span class="nav-label">Dashboard</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-item" data-nav="registration" id="nav-registration">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10M12 14v4M10 16h4"/></svg>
+                <span class="nav-label">Registration</span>
+                <span class="nav-badge badge-amber" title="Registration open">Open</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-item" data-nav="results" id="nav-results">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-13h-7l2-5l-9 13h7z"/></svg>
+                <span class="nav-label">Results</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-item" data-nav="routine" id="nav-routine">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+                <span class="nav-label">Class Routine</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-item" data-nav="profile" id="nav-profile">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="nav-label">Student Profile</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Sidebar Bottom Footer -->
+        <div class="sidebar-footer">
+          <!-- Mini Help / Status Card -->
+          <div class="sidebar-status-card">
+            <div class="status-indicator-dot"></div>
+            <div class="status-text-block">
+              <span class="status-title">Fall 2026 Active</span>
+              <span class="status-sub">Week 4 · Mid-terms Oct 18</span>
+            </div>
+          </div>
+
+          <!-- Logout Button -->
+          <button type="button" class="btn-logout" id="btn-logout" title="Sign out of student account">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span>Logout</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Layout Body -->
+      <div class="portal-body">
+        <!-- Reusable Persistent Top Bar -->
+        <header class="portal-topbar" id="portal-topbar">
+          <div class="topbar-left">
+            <!-- Mobile Menu Toggle -->
+            <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation drawer">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+
+            <!-- Global Search Bar -->
+            <div class="topbar-search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="global-search-input" placeholder="Search courses, instructors, routines (Press ⌘K)..." autocomplete="off">
+              <span class="search-kbd">⌘K</span>
+            </div>
+          </div>
+
+          <div class="topbar-right">
+            <!-- Semester Selector Dropdown -->
+            <div class="semester-selector-wrapper">
+              <span class="selector-label">Term:</span>
+              <select id="global-semester-select" class="semester-select" aria-label="Select active semester">
+                <option value="Fall 2026" selected>Fall 2026 (Active)</option>
+                <option value="Spring 2026">Spring 2026</option>
+                <option value="Fall 2025">Fall 2025</option>
+                <option value="Spring 2025">Spring 2025</option>
+              </select>
+            </div>
+
+            <!-- Notification Bell with Drawer Toggle -->
+            <div class="notification-wrapper">
+              <button type="button" class="btn-notification" id="btn-notifications" aria-label="Open notifications" aria-expanded="false">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notification-badge" id="notif-count">3</span>
+              </button>
+
+              <!-- Notifications Dropdown Flyout -->
+              <div class="notifications-dropdown hidden" id="notifications-dropdown">
+                <div class="notif-header">
+                  <h4 class="notif-title">Notifications</h4>
+                  <button type="button" class="btn-mark-read" id="btn-mark-read">Mark all read</button>
+                </div>
+                <div class="notif-list">
+                  <div class="notif-item unread" data-action="registration">
+                    <div class="notif-icon-box amber">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <div class="notif-text">
+                      <p class="notif-msg"><strong>Course Registration Deadline:</strong> Fall 2026 registration closes in 3 days.</p>
+                      <span class="notif-time">1 hour ago · Registrar Office</span>
+                    </div>
+                  </div>
+                  <div class="notif-item unread" data-action="routine">
+                    <div class="notif-icon-box indigo">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    </div>
+                    <div class="notif-text">
+                      <p class="notif-msg"><strong>Routine Update:</strong> CSE 4702 Lab shifted to Software Lab 3.</p>
+                      <span class="notif-time">3 hours ago · Dept of CSE</span>
+                    </div>
+                  </div>
+                  <div class="notif-item unread" data-action="results">
+                    <div class="notif-icon-box emerald">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="notif-text">
+                      <p class="notif-msg"><strong>Grades Published:</strong> Spring 2026 final transcripts available.</p>
+                      <span class="notif-time">1 day ago · Controller of Exams</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="notif-footer">
+                  <span class="notif-footer-text">Synced with campus notification service</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Theme Toggle Button (Light / Dark) -->
+            <button type="button" class="btn-theme-toggle" id="theme-toggle-topbar" aria-label="Toggle Dark / Light Mode" title="Toggle Theme">
+              <svg class="theme-icon-sun hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+
+            <!-- Student Profile Avatar & Quick Link -->
+            <button type="button" class="topbar-user-profile" id="topbar-profile-btn" title="Go to Student Profile">
+              <div class="avatar-ring">
+                <span class="user-avatar-initials">MN</span>
+              </div>
+              <div class="topbar-user-details">
+                <span class="topbar-user-name">Mahid Nazat</span>
+                <span class="topbar-user-sub" id="topbar-user-sub">CSE · 230042144</span>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- Dynamic Main Content Views -->
+        <main class="portal-main" id="portal-main-area">
+
+          <!-- ================================================================= -->
+          <!-- SCREEN 2: STUDENT DASHBOARD                                       -->
+          <!-- ================================================================= -->
+          <div id="screen-dashboard" class="screen-view">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+              <div class="welcome-text-block">
+                <div class="welcome-badge-line">
+                  <span class="badge badge-indigo">B.Sc. in CSE · 7th Semester</span>
+                  <span class="term-tag">Fall 2026</span>
+                </div>
+                <h2 class="welcome-title">Good morning, Mahid 👋</h2>
+                <p class="welcome-subtitle">
+                  Today is <span id="dashboard-current-date">Wednesday, Sep 16, 2026</span>. You have 3 lectures scheduled today.
+                </p>
+              </div>
+              <div class="welcome-banner-actions">
+                <button type="button" class="btn btn-white-outline" id="dash-btn-quick-routine">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  Today's Schedule
+                </button>
+                <button type="button" class="btn btn-emerald" id="dash-btn-quick-reg">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                  Course Registration
+                </button>
+              </div>
+            </div>
+
+            <!-- Actionable Registration Alert Banner -->
+            <div class="alert-banner-amber">
+              <div class="alert-amber-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="alert-amber-content">
+                <div class="alert-amber-title">Course Registration Closes in 3 Days!</div>
+                <p class="alert-amber-desc">
+                  Final deadline: <strong>Sep 20, 2026, 11:59 PM</strong>. Ensure you have enrolled in 12–18 credits with zero timetable collisions.
+                </p>
+              </div>
+              <div class="alert-amber-cta">
+                <button type="button" class="btn btn-amber-solid" id="btn-dash-register-now">
+                  Register Now
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Row of 4 Stat Cards -->
+            <div class="stat-cards-grid">
+              <!-- Stat 1: CGPA -->
+              <div class="stat-card" id="card-stat-cgpa" title="Click to view full academic transcript">
+                <div class="stat-card-header">
+                  <span class="stat-label">Cumulative CGPA</span>
+                  <div class="stat-icon-wrapper indigo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </div>
+                </div>
+                <div class="stat-value-group">
+                  <div class="stat-primary-value">3.62 <span class="stat-denom">/ 4.00</span></div>
+                  <div class="stat-trend trend-positive">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                    <span>+0.05 vs Spring '26</span>
+                  </div>
+                </div>
+                <div class="stat-footer-text">Dean's Honor Roll · Top 12% in Dept</div>
+              </div>
+
+              <!-- Stat 2: Credits Completed -->
+              <div class="stat-card" id="card-stat-credits">
+                <div class="stat-card-header">
+                  <span class="stat-label">Credits Completed</span>
+                  <div class="stat-icon-wrapper emerald">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  </div>
+                </div>
+                <div class="stat-value-group">
+                  <div class="stat-primary-value">96 <span class="stat-denom">/ 144</span></div>
+                  <span class="stat-pill pill-emerald">66.7% Done</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill fill-emerald" style="width: 66.7%;"></div>
+                </div>
+                <div class="stat-footer-text">48 credits remaining to graduate</div>
+              </div>
+
+              <!-- Stat 3: Current Semester Courses -->
+              <div class="stat-card" id="card-stat-courses">
+                <div class="stat-card-header">
+                  <span class="stat-label">Enrolled Courses</span>
+                  <div class="stat-icon-wrapper amber">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+                  </div>
+                </div>
+                <div class="stat-value-group">
+                  <div class="stat-primary-value">5 <span class="stat-denom">Courses</span></div>
+                  <span class="stat-pill pill-indigo">15.0 Credits</span>
+                </div>
+                <div class="stat-sub-info">
+                  <span class="bullet-dot green"></span>
+                  <span>100% verified timetable slots</span>
+                </div>
+                <div class="stat-footer-text">Registration status: Approved</div>
+              </div>
+
+              <!-- Stat 4: Attendance -->
+              <div class="stat-card" id="card-stat-attendance">
+                <div class="stat-card-header">
+                  <span class="stat-label">Average Attendance</span>
+                  <div class="stat-icon-wrapper purple">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                </div>
+                <div class="stat-value-group">
+                  <div class="stat-primary-value">91.4%</div>
+                  <span class="stat-pill pill-emerald">Eligible</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill fill-emerald" style="width: 91.4%;"></div>
+                </div>
+                <div class="stat-footer-text">Above mandatory 85% requirement</div>
+              </div>
+            </div>
+
+            <!-- Dashboard 3-Column Content Widgets -->
+            <div class="dashboard-widgets-grid">
+              <!-- Widget 1: Today's Classes -->
+              <div class="dashboard-card widget-classes">
+                <div class="dashboard-card-header">
+                  <div class="header-title-box">
+                    <div class="icon-round indigo">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    </div>
+                    <div>
+                      <h3 class="widget-title">Today's Schedule</h3>
+                      <span class="widget-sub">Wednesday · 3 Classes Scheduled</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn-text-link" id="btn-dash-view-routine">View Full Routine →</button>
+                </div>
+
+                <div class="classes-schedule-list">
+                  <!-- Class item 1 -->
+                  <div class="class-item-card status-active">
+                    <div class="class-time-badge">
+                      <span class="time-main">08:30 AM</span>
+                      <span class="time-sub">10:00 AM</span>
+                    </div>
+                    <div class="class-item-divider"></div>
+                    <div class="class-item-info">
+                      <div class="class-code-row">
+                        <span class="class-code">CSE 4701</span>
+                        <span class="badge badge-emerald">In Progress</span>
+                      </div>
+                      <h4 class="class-name">Artificial Intelligence</h4>
+                      <div class="class-meta">
+                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 302 (Academic Bldg 1)</span>
+                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Prof. Dr. Hasan</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Class item 2 -->
+                  <div class="class-item-card">
+                    <div class="class-time-badge">
+                      <span class="time-main">10:15 AM</span>
+                      <span class="time-sub">12:45 PM</span>
+                    </div>
+                    <div class="class-item-divider"></div>
+                    <div class="class-item-info">
+                      <div class="class-code-row">
+                        <span class="class-code">CSE 4702</span>
+                        <span class="badge badge-gray">Upcoming</span>
+                      </div>
+                      <h4 class="class-name">Artificial Intelligence Sessional</h4>
+                      <div class="class-meta">
+                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Software Lab 3</span>
+                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Lect. Farhan & TA</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Class item 3 -->
+                  <div class="class-item-card">
+                    <div class="class-time-badge">
+                      <span class="time-main">02:00 PM</span>
+                      <span class="time-sub">03:30 PM</span>
+                    </div>
+                    <div class="class-item-divider"></div>
+                    <div class="class-item-info">
+                      <div class="class-code-row">
+                        <span class="class-code">HUM 4715</span>
+                        <span class="badge badge-gray">Upcoming</span>
+                      </div>
+                      <h4 class="class-name">Engineering Ethics & Professionalism</h4>
+                      <div class="class-meta">
+                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 405 (Auditorium Bldg)</span>
+                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Dr. Rahman</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Widget 2: Recent Results Summary -->
+              <div class="dashboard-card widget-results">
+                <div class="dashboard-card-header">
+                  <div class="header-title-box">
+                    <div class="icon-round emerald">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-13h-7l2-5l-9 13h7z"/></svg>
+                    </div>
+                    <div>
+                      <h3 class="widget-title">Recent Academic Results</h3>
+                      <span class="widget-sub">Spring 2026 Semester Performance</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn-text-link" id="btn-dash-view-results">View All →</button>
+                </div>
+
+                <div class="semester-summary-pill-box">
+                  <div class="pill-stat">
+                    <span class="pill-label">Term GPA</span>
+                    <span class="pill-val emerald-text">3.82</span>
+                  </div>
+                  <div class="pill-stat-divider"></div>
+                  <div class="pill-stat">
+                    <span class="pill-label">Credits</span>
+                    <span class="pill-val">19.5 Cr</span>
+                  </div>
+                  <div class="pill-stat-divider"></div>
+                  <div class="pill-stat">
+                    <span class="pill-label">Status</span>
+                    <span class="pill-val">Passed</span>
+                  </div>
+                </div>
+
+                <div class="recent-grades-table">
+                  <div class="grade-row">
+                    <div class="grade-course">
+                      <span class="code">CSE 4601</span>
+                      <span class="title">Distributed Systems & Cloud</span>
+                    </div>
+                    <div class="grade-credits">3.0 Cr</div>
+                    <div class="grade-badge badge-aplus">A+ (4.00)</div>
+                  </div>
+                  <div class="grade-row">
+                    <div class="grade-course">
+                      <span class="code">CSE 4603</span>
+                      <span class="title">Compiler Design</span>
+                    </div>
+                    <div class="grade-credits">3.0 Cr</div>
+                    <div class="grade-badge badge-a">A (3.75)</div>
+                  </div>
+                  <div class="grade-row">
+                    <div class="grade-course">
+                      <span class="code">CSE 4604</span>
+                      <span class="title">Compiler Design Sessional</span>
+                    </div>
+                    <div class="grade-credits">1.5 Cr</div>
+                    <div class="grade-badge badge-aplus">A+ (4.00)</div>
+                  </div>
+                  <div class="grade-row">
+                    <div class="grade-course">
+                      <span class="code">MATH 4641</span>
+                      <span class="title">Numerical Methods & Analysis</span>
+                    </div>
+                    <div class="grade-credits">3.0 Cr</div>
+                    <div class="grade-badge badge-aminus">A- (3.50)</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Widget 3: Notices & Campus Announcements -->
+              <div class="dashboard-card widget-notices">
+                <div class="dashboard-card-header">
+                  <div class="header-title-box">
+                    <div class="icon-round amber">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    </div>
+                    <div>
+                      <h3 class="widget-title">Official Notices</h3>
+                      <span class="widget-sub">University Administration</span>
+                    </div>
+                  </div>
+                  <span class="badge badge-amber">4 Updates</span>
+                </div>
+
+                <div class="notices-scroll-list">
+                  <div class="notice-item">
+                    <div class="notice-tag-row">
+                      <span class="badge badge-indigo">Exam Schedule</span>
+                      <span class="notice-date">2 hours ago</span>
+                    </div>
+                    <h4 class="notice-heading">Mid-term Examination Routine — Fall 2026</h4>
+                    <p class="notice-snippet">The Controller of Examinations has published the revised mid-term routine. Please check your routine tab.</p>
+                  </div>
+
+                  <div class="notice-item">
+                    <div class="notice-tag-row">
+                      <span class="badge badge-emerald">Research</span>
+                      <span class="notice-date">Yesterday</span>
+                    </div>
+                    <h4 class="notice-heading">Undergraduate Thesis Defense Slots Open</h4>
+                    <p class="notice-snippet">7th & 8th semester students must submit their initial chapter drafts to their designated supervisors by Sep 30.</p>
+                  </div>
+
+                  <div class="notice-item">
+                    <div class="notice-tag-row">
+                      <span class="badge badge-gray">Library</span>
+                      <span class="notice-date">3 days ago</span>
+                    </div>
+                    <h4 class="notice-heading">Central Library Book Renewal & Digital Access</h4>
+                    <p class="notice-snippet">IEEE Xplore and Springer digital credentials have been renewed for the 2026-2027 academic session.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- SCREEN 3: COURSE REGISTRATION                                     -->
+          <!-- ================================================================= -->
+          <div id="screen-registration" class="screen-view">
+            <!-- Screen Header -->
+            <div class="view-header">
+              <div>
+                <div class="header-breadcrumbs">
+                  <span>Dashboard</span> / <span class="current">Term Registration</span>
+                </div>
+                <h2 class="view-title">Term Course Registration — 7th Semester (Fall 2026)</h2>
+                <p class="view-subtitle">IUT Prescribed Closed-Credit Curriculum: 4 Academic Years · 8 Semesters (2 Semesters per Year). Prescribed batch curriculum package.</p>
+              </div>
+              <!-- Deadline Badge -->
+              <div class="registration-deadline-badge">
+                <div class="deadline-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="deadline-text">
+                  <span class="deadline-label">Registration Deadline</span>
+                  <span class="deadline-time" id="reg-countdown">Sep 20, 2026 · 11:59 PM (3d 8h left)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- IUT Closed Credit Banner -->
+            <div class="closed-credit-info-banner">
+              <div class="banner-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div class="banner-content">
+                <div class="banner-title-row">
+                  <h4>IUT Closed Credit Academic Curriculum</h4>
+                  <span class="badge badge-emerald">Fixed Batch Curriculum · 8 Semesters / 4 Years</span>
+                </div>
+                <p class="banner-desc">
+                  Under IUT's closed-credit regulations, degree programs comprise <strong>8 semesters across 4 academic years (2 semesters per year)</strong>.
+                  All students in <strong>CSE Batch 2023 (Semester 7)</strong> take the identical prescribed core syllabus with synchronized class sections.
+                </p>
+              </div>
+              <div class="banner-meta">
+                <div class="meta-kpi-item">
+                  <span class="meta-kpi-lbl">Total Terms</span>
+                  <span class="meta-kpi-val">8 Terms</span>
+                </div>
+                <div class="meta-kpi-item">
+                  <span class="meta-kpi-lbl">Terms / Year</span>
+                  <span class="meta-kpi-val">2 Terms</span>
+                </div>
+                <div class="meta-kpi-item">
+                  <span class="meta-kpi-lbl">Current Term</span>
+                  <span class="meta-kpi-val">7th Sem</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Registration View Switcher: Prescribed Package vs 8-Semester Roadmap -->
+            <div class="reg-view-switcher" role="tablist">
+              <button type="button" class="reg-view-btn active" id="btn-view-reg-package">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>7th Semester Prescribed Package (Active)</span>
+              </button>
+              <button type="button" class="reg-view-btn" id="btn-view-reg-roadmap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>4-Year / 8-Semester Curriculum Roadmap</span>
+              </button>
+            </div>
+
+            <!-- VIEW A: Prescribed Course Package Layout -->
+            <div id="reg-package-view">
+              <!-- Two-Panel Registration Layout (60% / 40%) -->
+              <div class="registration-two-panel">
+                <!-- Left 60%: Available Courses -->
+                <div class="reg-main-panel">
+                  <!-- Filter Bar -->
+                  <div class="course-filter-card">
+                    <div class="filter-search-box">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                      <input type="text" id="course-search-input" placeholder="Search by course code, title, or instructor...">
+                    </div>
+
+                    <div class="filter-controls-row">
+                      <div class="filter-select-group">
+                        <label for="filter-dept">Department:</label>
+                        <select id="filter-dept" class="filter-select">
+                          <option value="ALL">All Departments</option>
+                          <option value="CSE" selected>Computer Science & Eng (CSE)</option>
+                          <option value="EEE">Electrical & Electronic Eng (EEE)</option>
+                          <option value="HUM">Humanities & Sciences (HUM)</option>
+                          <option value="MATH">Mathematics (MATH)</option>
+                        </select>
+                      </div>
+
+                      <div class="filter-select-group">
+                        <label for="filter-credits">Credit Hours:</label>
+                        <select id="filter-credits" class="filter-select">
+                          <option value="ALL">All Credits</option>
+                          <option value="1.5">1.5 Credits (Lab)</option>
+                          <option value="3.0">3.0 Credits (Theory)</option>
+                          <option value="4.0">4.0 Credits</option>
+                        </select>
+                      </div>
+
+                      <label class="filter-checkbox-label">
+                        <input type="checkbox" id="filter-seats-only">
+                        <span class="checkbox-text">Available Seats Only</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Courses Table Card -->
+                  <div class="courses-table-card">
+                    <div class="table-card-header">
+                      <h3 class="table-title">Prescribed Batch Courses (7th Semester CSE)</h3>
+                      <span class="table-counter" id="course-catalog-count">Showing 8 courses</span>
+                    </div>
+
+                    <div class="responsive-table-wrapper">
+                      <table class="modern-table" id="courses-catalog-table">
+                        <thead>
+                          <tr>
+                            <th>Course Code & Title</th>
+                            <th>Credits</th>
+                            <th>Seats Available</th>
+                            <th>Time Slot</th>
+                            <th>Instructor</th>
+                            <th style="text-align: right;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody id="catalog-table-body">
+                          <!-- Populated dynamically via JS -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right 40%: My Cart & Live Conflict Engine -->
+                <aside class="reg-cart-panel">
+                  <div class="cart-sticky-wrapper">
+                    <div class="cart-card">
+                      <div class="cart-header">
+                        <div class="cart-title-group">
+                          <h3 class="cart-title">Prescribed Term Package</h3>
+                          <span class="cart-subtitle">Fall 2026 · Batch 2023 (Section 7A)</span>
+                        </div>
+                        <span class="badge badge-indigo" id="cart-item-count-badge">5 Courses</span>
+                      </div>
+
+                      <!-- Credit Progress Meter -->
+                      <div class="credit-meter-box">
+                        <div class="credit-meter-header">
+                          <span class="meter-label">Total Credits Enrolled:</span>
+                          <span class="meter-value" id="cart-credit-text"><strong>15.0</strong> / 18.0 Max</span>
+                        </div>
+                        <div class="progress-bar-container">
+                          <div class="progress-bar-fill fill-indigo" id="cart-credit-bar" style="width: 83.3%;"></div>
+                        </div>
+                        <div class="meter-foot-note" id="cart-credit-status-note">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                          <span>Standard IUT 7th Semester Prescribed Load</span>
+                        </div>
+                      </div>
+
+                      <!-- LIVE CONFLICT WARNING BOX (Dynamic) -->
+                      <div class="cart-conflict-alert hidden" id="cart-conflict-alert" role="alert">
+                        <div class="conflict-icon">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="conflict-content">
+                          <h4 class="conflict-title">Schedule Conflict Detected!</h4>
+                          <p class="conflict-message" id="conflict-message-text">
+                            Course conflict detected between two selected classes.
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Cart Course Items List -->
+                      <div class="cart-items-list" id="cart-items-container">
+                        <!-- Populated dynamically via JS -->
+                      </div>
+
+                      <!-- Cart Footer CTA -->
+                      <div class="cart-footer">
+                        <div class="cart-summary-line">
+                          <span>Tuition & Course Fee:</span>
+                          <span class="fee-estimate">Included in Semester Dues</span>
+                        </div>
+                        <button type="button" class="btn btn-emerald btn-block btn-lg" id="btn-confirm-registration">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                          <span>Confirm Term Package Registration</span>
+                        </button>
+                        <span class="cart-lock-note">🔒 Registration can be adjusted until Sep 20, 11:59 PM</span>
+                      </div>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <!-- VIEW B: 4-Year / 8-Semester Curriculum Roadmap Grid -->
+            <div id="reg-roadmap-view" class="hidden">
+              <div class="roadmap-years-grid" id="roadmap-years-container">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- SCREEN 4: ACADEMIC RESULTS                                        -->
+          <!-- ================================================================= -->
+          <div id="screen-results" class="screen-view">
+            <!-- Screen Header -->
+            <div class="view-header">
+              <div>
+                <div class="header-breadcrumbs">
+                  <span>Dashboard</span> / <span class="current">Academic Results</span>
+                </div>
+                <h2 class="view-title">Academic Results & Performance</h2>
+                <p class="view-subtitle">Official semester grade sheets, credit audit, and cumulative GPA progression across 8 semesters.</p>
+              </div>
+              <!-- Action Button: Download Official Transcript -->
+              <button type="button" class="btn btn-secondary btn-icon-left" id="btn-download-transcript">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Official Transcript (PDF)</span>
+              </button>
+            </div>
+
+            <!-- Semester Tab Selector (8 Semesters across 4 Academic Years) -->
+            <div class="results-semester-tabs" role="tablist">
+              <button type="button" class="semester-tab" data-semester="Fall 2026">7th Sem (Fall 2026 · Current)</button>
+              <button type="button" class="semester-tab active" data-semester="Spring 2026">6th Sem (Spring 2026)</button>
+              <button type="button" class="semester-tab" data-semester="Fall 2025">5th Sem (Fall 2025)</button>
+              <button type="button" class="semester-tab" data-semester="Spring 2025">4th Sem (Spring 2025)</button>
+              <button type="button" class="semester-tab" data-semester="Fall 2024">3rd Sem (Fall 2024)</button>
+              <button type="button" class="semester-tab" data-semester="Spring 2024">2nd Sem (Spring 2024)</button>
+              <button type="button" class="semester-tab" data-semester="Fall 2023">1st Sem (Fall 2023)</button>
+              <button type="button" class="semester-tab" data-semester="ALL">All 8 Semesters Summary</button>
+            </div>
+
+            <!-- Summary KPI Cards -->
+            <div class="results-kpi-grid">
+              <div class="kpi-card">
+                <span class="kpi-label">Semester GPA</span>
+                <div class="kpi-value-row">
+                  <span class="kpi-val" id="kpi-semester-gpa">3.82</span>
+                  <span class="badge badge-emerald">Excellent</span>
+                </div>
+                <span class="kpi-sub" id="kpi-sem-sub">Spring 2026 Term</span>
+              </div>
+
+              <div class="kpi-card">
+                <span class="kpi-label">Cumulative CGPA</span>
+                <div class="kpi-value-row">
+                  <span class="kpi-val indigo-text" id="kpi-cgpa">3.62</span>
+                  <span class="stat-trend trend-positive">+0.05</span>
+                </div>
+                <span class="kpi-sub">Across 6 completed semesters</span>
+              </div>
+
+              <div class="kpi-card">
+                <span class="kpi-label">Credits Earned This Term</span>
+                <div class="kpi-value-row">
+                  <span class="kpi-val" id="kpi-sem-credits">19.5</span>
+                  <span class="kpi-denom">/ 19.5 Attempted</span>
+                </div>
+                <span class="kpi-sub">100% Course Completion Rate</span>
+              </div>
+
+              <div class="kpi-card">
+                <span class="kpi-label">Academic Standing</span>
+                <div class="kpi-value-row">
+                  <span class="kpi-val emerald-text">Good Standing</span>
+                </div>
+                <span class="kpi-sub">Dean's List Eligible</span>
+              </div>
+            </div>
+
+            <!-- GPA Trend Interactive Chart Card -->
+            <div class="results-chart-card">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">GPA Progression Trend Across Semesters</h3>
+                  <p class="chart-subtitle">Interactive semester-by-semester grade point average and cumulative CGPA trajectory.</p>
+                </div>
+                <div class="chart-legend">
+                  <div class="legend-item"><span class="legend-dot indigo"></span><span>Semester GPA</span></div>
+                  <div class="legend-item"><span class="legend-dot emerald"></span><span>Cumulative CGPA</span></div>
+                </div>
+              </div>
+
+              <!-- Interactive SVG Chart -->
+              <div class="chart-svg-container" id="gpa-chart-container">
+                <svg id="gpa-trend-svg" viewBox="0 0 800 240" class="gpa-svg" preserveAspectRatio="none">
+                  <!-- Chart Grid Lines -->
+                  <line x1="50" y1="30" x2="770" y2="30" stroke="#E5E7EB" stroke-dasharray="4"/>
+                  <line x1="50" y1="80" x2="770" y2="80" stroke="#E5E7EB" stroke-dasharray="4"/>
+                  <line x1="50" y1="130" x2="770" y2="130" stroke="#E5E7EB" stroke-dasharray="4"/>
+                  <line x1="50" y1="180" x2="770" y2="180" stroke="#E5E7EB" stroke-dasharray="4"/>
+
+                  <!-- Y-Axis Labels -->
+                  <text x="35" y="34" class="chart-axis-text">4.0</text>
+                  <text x="35" y="84" class="chart-axis-text">3.75</text>
+                  <text x="35" y="134" class="chart-axis-text">3.50</text>
+                  <text x="35" y="184" class="chart-axis-text">3.25</text>
+
+                  <!-- Area Under Curve -->
+                  <defs>
+                    <linearGradient id="gpaGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#3730A3" stop-opacity="0.2"/>
+                      <stop offset="100%" stop-color="#3730A3" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Paths (Calculated for Sem 1 to Sem 6: 3.45, 3.52, 3.60, 3.58, 3.69, 3.82) -->
+                  <path d="M90 140 L220 126 L350 110 L480 114 L610 92 L740 66 L740 210 L90 210 Z" fill="url(#gpaGradient)"/>
+                  <path d="M90 140 L220 126 L350 110 L480 114 L610 92 L740 66" fill="none" stroke="#3730A3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                  <!-- CGPA Cumulative Line -->
+                  <path d="M90 140 L220 133 L350 124 L480 122 L610 112 L740 106" fill="none" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round"/>
+
+                  <!-- Interactive Data Points -->
+                  <g class="chart-points-group">
+                    <circle cx="90" cy="140" r="6" class="chart-dot" data-sem="1st Sem" data-term="Fall 2023" data-gpa="3.45" data-cgpa="3.45"/>
+                    <circle cx="220" cy="126" r="6" class="chart-dot" data-sem="2nd Sem" data-term="Spring 2024" data-gpa="3.52" data-cgpa="3.48"/>
+                    <circle cx="350" cy="110" r="6" class="chart-dot" data-sem="3rd Sem" data-term="Fall 2024" data-gpa="3.60" data-cgpa="3.52"/>
+                    <circle cx="480" cy="114" r="6" class="chart-dot" data-sem="4th Sem" data-term="Spring 2025" data-gpa="3.58" data-cgpa="3.54"/>
+                    <circle cx="610" cy="92" r="6" class="chart-dot" data-sem="5th Sem" data-term="Fall 2025" data-gpa="3.69" data-cgpa="3.57"/>
+                    <circle cx="740" cy="66" r="7" class="chart-dot dot-current" data-sem="6th Sem" data-term="Spring 2026" data-gpa="3.82" data-cgpa="3.62"/>
+                  </g>
+
+                  <!-- X-Axis Labels -->
+                  <text x="90" y="230" text-anchor="middle" class="chart-axis-text">1st (F23)</text>
+                  <text x="220" y="230" text-anchor="middle" class="chart-axis-text">2nd (S24)</text>
+                  <text x="350" y="230" text-anchor="middle" class="chart-axis-text">3rd (F24)</text>
+                  <text x="480" y="230" text-anchor="middle" class="chart-axis-text">4th (S25)</text>
+                  <text x="610" y="230" text-anchor="middle" class="chart-axis-text">5th (F25)</text>
+                  <text x="740" y="230" text-anchor="middle" class="chart-axis-text font-bold">6th (S26)</text>
+                </svg>
+
+                <!-- Floating Chart Tooltip -->
+                <div id="chart-tooltip" class="chart-tooltip hidden">
+                  <div class="tooltip-title" id="tt-term">Spring 2026</div>
+                  <div class="tooltip-row">
+                    <span>Term GPA:</span>
+                    <strong id="tt-gpa">3.82</strong>
+                  </div>
+                  <div class="tooltip-row">
+                    <span>Cumulative CGPA:</span>
+                    <strong id="tt-cgpa">3.62</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Semester Results Table Card -->
+            <div class="results-table-card">
+              <div class="table-card-header">
+                <div>
+                  <h3 class="table-title" id="results-table-heading">Grade Breakdown — Spring 2026</h3>
+                  <span class="table-counter">6 Enrolled Courses · 19.5 Credit Hours</span>
+                </div>
+                <div class="table-actions">
+                  <span class="published-badge">Status: Official Grades Published</span>
+                </div>
+              </div>
+
+              <div class="responsive-table-wrapper">
+                <table class="modern-table">
+                  <thead>
+                    <tr>
+                      <th>Course Code</th>
+                      <th>Course Title</th>
+                      <th>Credit Hours</th>
+                      <th>Letter Grade</th>
+                      <th>Grade Point</th>
+                      <th>Remarks</th>
+                    </tr>
+                  </thead>
+                  <tbody id="results-table-body">
+                    <!-- Populated dynamically via JS based on selected semester -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- SCREEN 5: CLASS ROUTINE                                           -->
+          <!-- ================================================================= -->
+          <div id="screen-routine" class="screen-view">
+            <!-- Screen Header -->
+            <div class="view-header">
+              <div>
+                <div class="header-breadcrumbs">
+                  <span>Dashboard</span> / <span class="current">Class Routine</span>
+                </div>
+                <h2 class="view-title">Class Routine — Fall 2026</h2>
+                <p class="view-subtitle">Official weekly schedule for 7th Semester B.Sc. CSE. Saturday through Thursday.</p>
+              </div>
+
+              <!-- Controls: View Toggle & Calendar Export -->
+              <div class="routine-controls-group">
+                <!-- Segmented Control View Toggle -->
+                <div class="segmented-control" role="group" aria-label="Routine view mode">
+                  <button type="button" class="seg-btn active" id="btn-routine-grid">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>Weekly Grid</span>
+                  </button>
+                  <button type="button" class="seg-btn" id="btn-routine-list">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    <span>List View</span>
+                  </button>
+                </div>
+
+                <!-- Export to Calendar CTA -->
+                <button type="button" class="btn btn-secondary btn-icon-left" id="btn-export-calendar">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M12 14v4M10 16h4"/></svg>
+                  <span>Export to Calendar (.ics)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- VIEW 1: WEEKLY GRID TIMETABLE -->
+            <div id="routine-grid-container" class="routine-grid-card">
+              <div class="timetable-scroll-wrapper">
+                <table class="timetable-grid">
+                  <thead>
+                    <tr>
+                      <th class="time-col-header">Time Slot</th>
+                      <th class="day-col-header">Saturday</th>
+                      <th class="day-col-header">Sunday</th>
+                      <th class="day-col-header">Monday</th>
+                      <th class="day-col-header">Tuesday</th>
+                      <th class="day-col-header active-day">Wednesday (Today)</th>
+                      <th class="day-col-header">Thursday</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Slot 1: 08:30 - 10:00 -->
+                    <tr>
+                      <td class="slot-time-cell">
+                        <span class="slot-start">08:30 AM</span>
+                        <span class="slot-end">10:00 AM</span>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-indigo" data-course-code="CSE 4701" data-course-name="Artificial Intelligence" data-room="Room 302" data-instructor="Prof. Dr. Hasan" data-slot="08:30 - 10:00 AM">
+                          <span class="tb-code">CSE 4701</span>
+                          <span class="tb-title">Artificial Intelligence</span>
+                          <span class="tb-room">📍 Room 302</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-cyan" data-course-code="CSE 4703" data-course-name="Computer Graphics" data-room="Room 304" data-instructor="Dr. Tanvir" data-slot="08:30 - 10:00 AM">
+                          <span class="tb-code">CSE 4703</span>
+                          <span class="tb-title">Computer Graphics</span>
+                          <span class="tb-room">📍 Room 304</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-indigo" data-course-code="CSE 4701" data-course-name="Artificial Intelligence" data-room="Room 302" data-instructor="Prof. Dr. Hasan" data-slot="08:30 - 10:00 AM">
+                          <span class="tb-code">CSE 4701</span>
+                          <span class="tb-title">Artificial Intelligence</span>
+                          <span class="tb-room">📍 Room 302</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-empty">—</div>
+                      </td>
+                      <td class="active-day-cell">
+                        <div class="timetable-block color-indigo active-slot" data-course-code="CSE 4701" data-course-name="Artificial Intelligence" data-room="Room 302" data-instructor="Prof. Dr. Hasan" data-slot="08:30 - 10:00 AM">
+                          <span class="tb-now-tag">CURRENT</span>
+                          <span class="tb-code">CSE 4701</span>
+                          <span class="tb-title">Artificial Intelligence</span>
+                          <span class="tb-room">📍 Room 302</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-empty">—</div>
+                      </td>
+                    </tr>
+
+                    <!-- Slot 2: 10:15 - 11:45 -->
+                    <tr>
+                      <td class="slot-time-cell">
+                        <span class="slot-start">10:15 AM</span>
+                        <span class="slot-end">11:45 AM</span>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-amber" data-course-code="HUM 4715" data-course-name="Engineering Ethics" data-room="Room 405" data-instructor="Dr. Rahman" data-slot="10:15 - 11:45 AM">
+                          <span class="tb-code">HUM 4715</span>
+                          <span class="tb-title">Engineering Ethics</span>
+                          <span class="tb-room">📍 Room 405</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-purple" data-course-code="MATH 4701" data-course-name="Mathematical Modeling" data-room="Room 201" data-instructor="Prof. Dr. Karim" data-slot="10:15 - 11:45 AM">
+                          <span class="tb-code">MATH 4701</span>
+                          <span class="tb-title">Math Modeling</span>
+                          <span class="tb-room">📍 Room 201</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-cyan" data-course-code="CSE 4703" data-course-name="Computer Graphics" data-room="Room 304" data-instructor="Dr. Tanvir" data-slot="10:15 - 11:45 AM">
+                          <span class="tb-code">CSE 4703</span>
+                          <span class="tb-title">Computer Graphics</span>
+                          <span class="tb-room">📍 Room 304</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-purple" data-course-code="MATH 4701" data-course-name="Mathematical Modeling" data-room="Room 201" data-instructor="Prof. Dr. Karim" data-slot="10:15 - 11:45 AM">
+                          <span class="tb-code">MATH 4701</span>
+                          <span class="tb-title">Math Modeling</span>
+                          <span class="tb-room">📍 Room 201</span>
+                        </div>
+                      </td>
+                      <td class="active-day-cell">
+                        <div class="timetable-block color-emerald" data-course-code="CSE 4702" data-course-name="AI Sessional Lab" data-room="Software Lab 3" data-instructor="Lect. Farhan" data-slot="10:15 AM - 12:45 PM">
+                          <span class="tb-code">CSE 4702</span>
+                          <span class="tb-title">AI Sessional Lab</span>
+                          <span class="tb-room">📍 Software Lab 3</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-blue" data-course-code="CSE 4704" data-course-name="Computer Graphics Lab" data-room="Multimedia Lab" data-instructor="Dr. Tanvir" data-slot="10:15 AM - 12:45 PM">
+                          <span class="tb-code">CSE 4704</span>
+                          <span class="tb-title">Graphics Lab</span>
+                          <span class="tb-room">📍 Multimedia Lab</span>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Lunch & Prayer Break Row -->
+                    <tr class="break-row">
+                      <td class="slot-time-cell break-label">12:45 – 02:00</td>
+                      <td colspan="6" class="break-cell">
+                        <span>🍱 Midday Break & Prayer Interval</span>
+                      </td>
+                    </tr>
+
+                    <!-- Slot 3: 02:00 - 03:30 -->
+                    <tr>
+                      <td class="slot-time-cell">
+                        <span class="slot-start">02:00 PM</span>
+                        <span class="slot-end">03:30 PM</span>
+                      </td>
+                      <td>
+                        <div class="timetable-empty">—</div>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-amber" data-course-code="HUM 4715" data-course-name="Engineering Ethics" data-room="Room 405" data-instructor="Dr. Rahman" data-slot="02:00 - 03:30 PM">
+                          <span class="tb-code">HUM 4715</span>
+                          <span class="tb-title">Engineering Ethics</span>
+                          <span class="tb-room">📍 Room 405</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-empty">—</div>
+                      </td>
+                      <td>
+                        <div class="timetable-empty">—</div>
+                      </td>
+                      <td class="active-day-cell">
+                        <div class="timetable-block color-amber" data-course-code="HUM 4715" data-course-name="Engineering Ethics" data-room="Room 405" data-instructor="Dr. Rahman" data-slot="02:00 - 03:30 PM">
+                          <span class="tb-code">HUM 4715</span>
+                          <span class="tb-title">Engineering Ethics</span>
+                          <span class="tb-room">📍 Room 405</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="timetable-empty">—</div>
+                      </td>
+                    </tr>
+
+                    <!-- Slot 4: 03:45 - 05:15 -->
+                    <tr>
+                      <td class="slot-time-cell">
+                        <span class="slot-start">03:45 PM</span>
+                        <span class="slot-end">05:15 PM</span>
+                      </td>
+                      <td>
+                        <div class="timetable-block color-rose" data-course-code="CSE 4700" data-course-name="Project & Thesis Consultation" data-room="Faculty Office 410" data-instructor="Dr. Mottalib" data-slot="03:45 - 05:15 PM">
+                          <span class="tb-code">CSE 4700</span>
+                          <span class="tb-title">Thesis Consultation</span>
+                          <span class="tb-room">📍 Dept Office 410</span>
+                        </div>
+                      </td>
+                      <td><div class="timetable-empty">—</div></td>
+                      <td><div class="timetable-empty">—</div></td>
+                      <td><div class="timetable-empty">—</div></td>
+                      <td class="active-day-cell"><div class="timetable-empty">—</div></td>
+                      <td><div class="timetable-empty">—</div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Course Color Legend -->
+              <div class="timetable-legend">
+                <span class="legend-header">Course Palette Legend:</span>
+                <div class="legend-item"><span class="legend-swatch color-indigo"></span><span>CSE 4701 AI</span></div>
+                <div class="legend-item"><span class="legend-swatch color-emerald"></span><span>CSE 4702 AI Lab</span></div>
+                <div class="legend-item"><span class="legend-swatch color-cyan"></span><span>CSE 4703 Graphics</span></div>
+                <div class="legend-item"><span class="legend-swatch color-blue"></span><span>CSE 4704 Graphics Lab</span></div>
+                <div class="legend-item"><span class="legend-swatch color-amber"></span><span>HUM 4715 Ethics</span></div>
+                <div class="legend-item"><span class="legend-swatch color-purple"></span><span>MATH 4701 Modeling</span></div>
+                <div class="legend-item"><span class="legend-swatch color-rose"></span><span>CSE 4700 Thesis</span></div>
+              </div>
+            </div>
+
+            <!-- VIEW 2: LIST VIEW -->
+            <div id="routine-list-container" class="routine-list-card hidden">
+              <!-- Populated dynamically via JS with day-grouped cards -->
+            </div>
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- SCREEN 6: STUDENT PROFILE                                         -->
+          <!-- ================================================================= -->
+          <div id="screen-profile" class="screen-view">
+            <!-- Screen Header -->
+            <div class="view-header">
+              <div>
+                <div class="header-breadcrumbs">
+                  <span>Dashboard</span> / <span class="current">Student Profile</span>
+                </div>
+                <h2 class="view-title">Student Profile & Records</h2>
+                <p class="view-subtitle">Manage your personal information, academic credentials, identity cards, and portal preferences.</p>
+              </div>
+            </div>
+
+            <!-- Two-Column Profile Layout (30% / 70%) -->
+            <div class="profile-layout-grid">
+              <!-- Left 30%: Profile Summary Card -->
+              <div class="profile-left-col">
+                <div class="profile-identity-card">
+                  <div class="profile-avatar-wrapper">
+                    <div class="profile-large-avatar" id="profile-avatar-display">MN</div>
+                    <button type="button" class="btn-avatar-camera" id="btn-upload-avatar" title="Upload new photo">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    </button>
+                  </div>
+
+                  <h3 class="profile-name" id="display-name">Mahid Nazat</h3>
+                  <span class="profile-dept">Computer Science & Engineering</span>
+                  <div class="profile-id-pill">
+                    <span>ID: </span><strong id="display-student-id">230042144</strong>
+                  </div>
+
+                  <div class="profile-meta-list">
+                    <div class="profile-meta-row">
+                      <span class="meta-label">Batch:</span>
+                      <span class="meta-val">2023 (Passing 2027)</span>
+                    </div>
+                    <div class="profile-meta-row">
+                      <span class="meta-label">Program:</span>
+                      <span class="meta-val">B.Sc. in CSE (Closed Credit)</span>
+                    </div>
+                    <div class="profile-meta-row">
+                      <span class="meta-label">Semester:</span>
+                      <span class="meta-val">7th Sem (Year 4, Term 1)</span>
+                    </div>
+                    <div class="profile-meta-row">
+                      <span class="meta-label">Status:</span>
+                      <span class="badge badge-emerald">Regular Student</span>
+                    </div>
+                    <div class="profile-meta-row">
+                      <span class="meta-label">Hall:</span>
+                      <span class="meta-val">Hall 1 (Room 412)</span>
+                    </div>
+                  </div>
+
+                  <div class="profile-card-cta">
+                    <button type="button" class="btn btn-secondary btn-block" id="btn-edit-profile-toggle">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                      <span id="edit-btn-text">Edit Profile</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Academic Advisor Mini Card -->
+                <div class="advisor-card">
+                  <span class="advisor-label">Assigned Academic Advisor</span>
+                  <div class="advisor-info">
+                    <div class="advisor-avatar">RM</div>
+                    <div>
+                      <h4 class="advisor-name">Prof. Dr. M. A. Mottalib</h4>
+                      <span class="advisor-title">Professor, Dept of CSE</span>
+                      <span class="advisor-email">mottalib@iut-dhaka.edu</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right 70%: Tabbed Management Sections -->
+              <div class="profile-right-col">
+                <div class="profile-tabs-card">
+                  <!-- Navigation Tabs -->
+                  <div class="profile-nav-tabs" role="tablist">
+                    <button type="button" class="ptab-btn active" data-tab="personal" id="tab-btn-personal">Personal Info</button>
+                    <button type="button" class="ptab-btn" data-tab="academic" id="tab-btn-academic">Academic Info</button>
+                    <button type="button" class="ptab-btn" data-tab="documents" id="tab-btn-documents">Documents</button>
+                    <button type="button" class="ptab-btn" data-tab="settings" id="tab-btn-settings">Settings</button>
+                  </div>
+
+                  <!-- Tab 1: Personal Info -->
+                  <div class="ptab-content active" id="tab-content-personal">
+                    <div class="tab-pane-header">
+                      <div>
+                        <h3 class="pane-title">Personal Information</h3>
+                        <p class="pane-sub">Your personal contact details and residential information.</p>
+                      </div>
+                      <div class="edit-actions-bar hidden" id="personal-edit-actions">
+                        <button type="button" class="btn btn-secondary btn-sm" id="btn-cancel-personal">Cancel</button>
+                        <button type="button" class="btn btn-emerald btn-sm" id="btn-save-personal">Save Changes</button>
+                      </div>
+                    </div>
+
+                    <form id="personal-info-form">
+                      <div class="fields-grid-2">
+                        <div class="field-item">
+                          <label for="p-fullname">Full Legal Name</label>
+                          <input type="text" id="p-fullname" value="Nafian Nazat Mahid" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item">
+                          <label for="p-email">University Email</label>
+                          <input type="email" id="p-email" value="mahid@iut-dhaka.edu" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item">
+                          <label for="p-phone">Mobile Phone</label>
+                          <input type="tel" id="p-phone" value="+880 1712 345678" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item">
+                          <label for="p-blood">Blood Group</label>
+                          <input type="text" id="p-blood" value="B+ (Positive)" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item">
+                          <label for="p-dob">Date of Birth</label>
+                          <input type="text" id="p-dob" value="October 14, 2003" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item">
+                          <label for="p-nationality">Nationality</label>
+                          <input type="text" id="p-nationality" value="Bangladeshi" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item field-full">
+                          <label for="p-address">Campus Residential Address</label>
+                          <input type="text" id="p-address" value="Room 412, Hall of Residence 1, IUT Campus, Gazipur" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item field-full">
+                          <label for="p-permanent">Permanent Home Address</label>
+                          <input type="text" id="p-permanent" value="House 42, Road 11, Sector 4, Uttara, Dhaka-1230" readonly class="profile-input">
+                        </div>
+
+                        <div class="field-item">
+                          <label for="p-guardian">Emergency Contact / Guardian</label>
+                          <input type="text" id="p-guardian" value="Nazat Mahbub (Father) — +880 1819 876543" readonly class="profile-input">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Tab 2: Academic Info -->
+                  <div class="ptab-content hidden" id="tab-content-academic">
+                    <div class="tab-pane-header">
+                      <div>
+                        <h3 class="pane-title">Academic Information & Curriculum</h3>
+                        <p class="pane-sub">Enrolled program data, advisor assignment, and degree progression.</p>
+                      </div>
+                    </div>
+
+                    <div class="fields-grid-2">
+                      <div class="field-item">
+                        <label>Student Identification No.</label>
+                        <div class="readonly-value">230042144</div>
+                      </div>
+
+                      <div class="field-item">
+                        <label>Degree Program</label>
+                        <div class="readonly-value">B.Sc. in Computer Science and Engineering</div>
+                      </div>
+
+                      <div class="field-item">
+                        <label>Department</label>
+                        <div class="readonly-value">Computer Science & Engineering (CSE)</div>
+                      </div>
+
+                      <div class="field-item">
+                        <label>Curriculum Syllabus Version</label>
+                        <div class="readonly-value">IUT 4-Year Closed Credit (8 Semesters · 2 Semesters/Year)</div>
+                      </div>
+
+                      <div class="field-item">
+                        <label>Enrollment Date</label>
+                        <div class="readonly-value">November 10, 2023</div>
+                      </div>
+
+                      <div class="field-item">
+                        <label>Expected Graduation</label>
+                        <div class="readonly-value">November 2027</div>
+                      </div>
+
+                      <div class="field-item">
+                        <label>Current Cumulative CGPA</label>
+                        <div class="readonly-value emerald-text">3.62 / 4.00</div>
+                      </div>
+
+                      <div class="field-item">
+                        <label>Total Credits Required</label>
+                        <div class="readonly-value">142.5 Credit Hours (108.5 Completed)</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tab 3: Official Documents -->
+                  <div class="ptab-content hidden" id="tab-content-documents">
+                    <div class="tab-pane-header">
+                      <div>
+                        <h3 class="pane-title">Official Documents & Credentials</h3>
+                        <p class="pane-sub">Download verified university certificates and identity records.</p>
+                      </div>
+                    </div>
+
+                    <div class="documents-grid">
+                      <!-- Doc 1 -->
+                      <div class="doc-card">
+                        <div class="doc-icon-box">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+                        </div>
+                        <div class="doc-details">
+                          <h4 class="doc-title">Digital Student ID Card</h4>
+                          <span class="doc-meta">PDF · Issued Sep 2022 · Verified</span>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="app.showToast('Student ID Card downloaded', 'success')">Download</button>
+                      </div>
+
+                      <!-- Doc 2 -->
+                      <div class="doc-card">
+                        <div class="doc-icon-box emerald">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div class="doc-details">
+                          <h4 class="doc-title">Official Semester Grade Sheet</h4>
+                          <span class="doc-meta">Spring 2026 · Digitally Signed</span>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="app.showToast('Spring 2026 Grade Sheet downloaded', 'success')">Download</button>
+                      </div>
+
+                      <!-- Doc 3 -->
+                      <div class="doc-card">
+                        <div class="doc-icon-box amber">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="doc-details">
+                          <h4 class="doc-title">Bonafide / Enrollment Certificate</h4>
+                          <span class="doc-meta">Request new certificate for visa or bank</span>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="app.showToast('Enrollment Certificate request submitted to Registrar', 'info')">Request</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tab 4: Settings -->
+                  <div class="ptab-content hidden" id="tab-content-settings">
+                    <div class="tab-pane-header">
+                      <div>
+                        <h3 class="pane-title">Portal Preferences & Security</h3>
+                        <p class="pane-sub">Manage notification channels, login credentials, and session controls.</p>
+                      </div>
+                    <div class="settings-section">
+                      <h4 class="settings-subtitle">Appearance & Portal Theme</h4>
+                      <div class="settings-theme-row">
+                        <div class="settings-theme-info">
+                          <h5>Dark Mode Theme</h5>
+                          <p>Toggle high-contrast sleek dark theme optimized for long study sessions</p>
+                        </div>
+                        <label class="switch">
+                          <input type="checkbox" id="toggle-theme-setting">
+                          <span class="slider"></span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="settings-section">
+                      <h4 class="settings-subtitle">Notification Preferences</h4>
+                      <div class="settings-toggle-list">
+                        <div class="toggle-row">
+                          <div class="toggle-info">
+                            <span class="toggle-title">Email alerts for published grades</span>
+                            <span class="toggle-desc">Receive instant email whenever a course grade or GPA is published</span>
+                          </div>
+                          <label class="switch">
+                            <input type="checkbox" id="toggle-grades-notif" checked>
+                            <span class="slider"></span>
+                          </label>
+                        </div>
+
+                        <div class="toggle-row">
+                          <div class="toggle-info">
+                            <span class="toggle-title">Course registration reminders</span>
+                            <span class="toggle-desc">Get notifications 48h and 12h prior to registration deadlines</span>
+                          </div>
+                          <label class="switch">
+                            <input type="checkbox" id="toggle-reg-notif" checked>
+                            <span class="slider"></span>
+                          </label>
+                        </div>
+
+                        <div class="toggle-row">
+                          <div class="toggle-info">
+                            <span class="toggle-title">Class routine & room change alerts</span>
+                            <span class="toggle-desc">Instant push notifications for emergency timetable adjustments</span>
+                          </div>
+                          <label class="switch">
+                            <input type="checkbox" id="toggle-routine-notif" checked>
+                            <span class="slider"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="settings-section">
+                      <h4 class="settings-subtitle">Change Account Password</h4>
+                      <form id="change-password-form" class="password-change-form">
+                        <div class="fields-grid-2">
+                          <div class="field-item">
+                            <label for="current-pwd">Current Password</label>
+                            <input type="password" id="current-pwd" placeholder="••••••••" required>
+                          </div>
+                          <div class="field-item">
+                            <label for="new-pwd">New Password</label>
+                            <input type="password" id="new-pwd" placeholder="Min. 8 characters" required>
+                          </div>
+                          <div class="field-item">
+                            <label for="confirm-new-pwd">Confirm New Password</label>
+                            <input type="password" id="confirm-new-pwd" placeholder="Repeat new password" required>
+                          </div>
+                        </div>
+                        <div class="pwd-submit-row">
+                          <button type="submit" class="btn btn-primary" id="btn-save-pwd">Update Password</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODALS & OVERLAYS                                                         -->
+    <!-- ========================================================================= -->
+
+    <!-- Modal 1: Forgot Password Modal -->
+    <div id="modal-forgot-pwd" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="forgot-pwd-title">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <h3 class="modal-title" id="forgot-pwd-title">Reset Your Password</h3>
+            <p class="modal-subtitle">Enter your registered student ID or institutional email to receive reset instructions.</p>
+          </div>
+          <button type="button" class="btn-close-modal" id="btn-close-forgot-pwd" aria-label="Close modal">✕</button>
+        </div>
+        <form id="forgot-pwd-form">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="forgot-email">Student ID or Email</label>
+              <input type="text" id="forgot-email" placeholder="e.g. 230042144 or student@iut-dhaka.edu" required>
+            </div>
+            <div class="info-callout">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>A secure verification link will be dispatched to your university-registered webmail.</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btn-cancel-forgot">Cancel</button>
+            <button type="submit" class="btn btn-primary">Send Reset Link</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 2: Course Registration Confirmation Dialog -->
+    <div id="modal-confirm-reg" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="confirm-reg-title">
+      <div class="modal-card modal-lg">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <div class="modal-badge-row">
+              <span class="badge badge-indigo">Fall 2026</span>
+              <span class="badge badge-emerald">Valid Credits</span>
+            </div>
+            <h3 class="modal-title" id="confirm-reg-title">Confirm Course Registration</h3>
+            <p class="modal-subtitle">Please review your selected courses before finalizing your enrollment.</p>
+          </div>
+          <button type="button" class="btn-close-modal" id="btn-close-confirm-reg" aria-label="Close dialog">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="summary-highlight-banner">
+            <div class="highlight-item">
+              <span class="hl-label">Total Enrolled:</span>
+              <span class="hl-val" id="modal-summary-courses">5 Courses</span>
+            </div>
+            <div class="highlight-item">
+              <span class="hl-label">Credit Hours:</span>
+              <span class="hl-val" id="modal-summary-credits">15.0 Credits</span>
+            </div>
+            <div class="highlight-item">
+              <span class="hl-label">Schedule Conflicts:</span>
+              <span class="hl-val emerald-text">0 Conflicts (Clear)</span>
+            </div>
+          </div>
+
+          <div class="modal-courses-summary" id="modal-courses-list">
+            <!-- Populated dynamically via JS -->
+          </div>
+
+          <div class="info-callout">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>You may adjust or drop courses without penalty until the official deadline (Sep 20, 2026, 11:59 PM).</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-modal-cancel-reg">Back to Cart</button>
+          <button type="button" class="btn btn-emerald" id="btn-modal-submit-reg">
+            <span>Submit Registration</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Class Routine Popover / Modal -->
+    <div id="modal-class-details" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="class-details-title">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <span class="badge badge-indigo" id="cd-course-code">CSE 4701</span>
+            <h3 class="modal-title" id="class-details-title">Artificial Intelligence</h3>
+            <span class="modal-subtitle" id="cd-time-room">Room 302 · 08:30 - 10:00 AM</span>
+          </div>
+          <button type="button" class="btn-close-modal" id="btn-close-class-details" aria-label="Close modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="class-detail-grid">
+            <div class="detail-block">
+              <span class="d-label">Faculty Instructor</span>
+              <span class="d-val" id="cd-instructor">Prof. Dr. Hasan</span>
+              <span class="d-sub">Dept of Computer Science & Eng</span>
+            </div>
+            <div class="detail-block">
+              <span class="d-label">Assigned Venue</span>
+              <span class="d-val" id="cd-room">Room 302</span>
+              <span class="d-sub">Academic Building 1, 3rd Floor</span>
+            </div>
+            <div class="detail-block">
+              <span class="d-label">Session Type</span>
+              <span class="d-val">Lecture & Discussion</span>
+              <span class="d-sub">3.0 Credit Theory</span>
+            </div>
+            <div class="detail-block">
+              <span class="d-label">Weekly Frequency</span>
+              <span class="d-val">Saturday & Monday</span>
+              <span class="d-sub">08:30 AM – 10:00 AM</span>
+            </div>
+          </div>
+
+          <div class="detail-links-row">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="app.showToast('Opening Course Syllabus...', 'info')">Course Syllabus</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="app.showToast('Opening Google Classroom / LMS...', 'info')">LMS Classroom</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="btn-close-cd-action">Close Details</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Keyboard Shortcuts & Search Command Palette -->
+    <div id="modal-command-palette" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-card modal-command">
+        <div class="command-search-bar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="cmd-input" placeholder="Type a destination or search (Dashboard, Registration, Results, Routine)..." autofocus>
+          <button type="button" class="btn-close-cmd" id="btn-close-cmd">ESC</button>
+        </div>
+        <div class="command-results-list" id="cmd-results">
+          <div class="cmd-item" data-dest="dashboard">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+            <div class="cmd-text">
+              <span class="cmd-label">Go to Student Dashboard</span>
+              <span class="cmd-desc">Overview, today's schedule, CGPA, and announcements</span>
+            </div>
+            <span class="cmd-hint">Jump</span>
+          </div>
+          <div class="cmd-item" data-dest="registration">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10M12 14v4M10 16h4"/></svg>
+            <div class="cmd-text">
+              <span class="cmd-label">Go to Course Registration</span>
+              <span class="cmd-desc">Catalog, timetable conflict detection, credit audit</span>
+            </div>
+            <span class="cmd-hint">Jump</span>
+          </div>
+          <div class="cmd-item" data-dest="results">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-13h-7l2-5l-9 13h7z"/></svg>
+            <div class="cmd-text">
+              <span class="cmd-label">Go to Academic Results</span>
+              <span class="cmd-desc">Grades by semester, GPA trendline chart, transcript download</span>
+            </div>
+            <span class="cmd-hint">Jump</span>
+          </div>
+          <div class="cmd-item" data-dest="routine">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <div class="cmd-text">
+              <span class="cmd-label">Go to Class Routine</span>
+              <span class="cmd-desc">Weekly grid and list view timetable, export to calendar</span>
+            </div>
+            <span class="cmd-hint">Jump</span>
+          </div>
+          <div class="cmd-item" data-dest="profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div class="cmd-text">
+              <span class="cmd-label">Go to Student Profile</span>
+              <span class="cmd-desc">Personal details, academic record, documents, settings</span>
+            </div>
+            <span class="cmd-hint">Jump</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Toast Notification Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>
