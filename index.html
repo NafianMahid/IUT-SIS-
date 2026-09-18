@@ -15,284 +15,124 @@
   <div id="app" class="app-root">
 
     <!-- ========================================================================= -->
-    <!-- SCREEN 1: LOGIN SCREEN                                                    -->
+    <!-- ========================================================================= -->
+    <!-- SCREEN 1: LOGIN SCREEN (Humanized Minimalist Centered Card)                -->
     <!-- ========================================================================= -->
     <section id="screen-login" class="screen-view active">
-      <div class="login-container">
-        <!-- Left Branding Panel (55%) -->
-        <div class="login-brand-panel">
-          <div class="brand-decorative-bg">
-            <div class="mesh-orb orb-1"></div>
-            <div class="mesh-orb orb-2"></div>
-            <div class="mesh-grid-pattern"></div>
+      <!-- Top-right Dark Mode Switcher -->
+      <div class="login-corner-action">
+        <button type="button" class="btn-theme-toggle" id="theme-toggle-login" aria-label="Toggle Dark / Light Mode" title="Toggle Theme">
+          <svg class="theme-icon-sun hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+
+      <div class="login-page-container">
+        <div class="login-card-box">
+          <!-- University Logo / Crest -->
+          <div class="login-crest-row" style="display:flex; justify-content:center; margin-bottom:14px;">
+            <svg width="48" height="48" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="44" height="44" rx="12" fill="#0284c7"/>
+              <path d="M22 6L35 13.5V23C35 30.5 29.5 37.5 22 39.5C14.5 37.5 9 30.5 9 23V13.5L22 6Z" fill="#0369a1" stroke="#38bdf8" stroke-width="2"/>
+              <path d="M22 14V30M16 20L22 14L28 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="22" cy="22" r="3" fill="#38bdf8"/>
+            </svg>
           </div>
-          
-          <div class="brand-content-wrapper">
-            <div class="brand-header">
-              <div class="university-crest">
-                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="44" height="44" rx="10" fill="white" fill-opacity="0.15"/>
-                  <path d="M22 6L35 13.5V23C35 30.5 29.5 37.5 22 39.5C14.5 37.5 9 30.5 9 23V13.5L22 6Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="2"/>
-                  <path d="M22 14V30M16 20L22 14L28 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="22" cy="22" r="3" fill="#10B981"/>
-                </svg>
-              </div>
-              <div class="brand-title-group">
-                <span class="university-sub">Islamic University of Technology</span>
-                <h1 class="brand-title">Student Information System</h1>
-              </div>
-            </div>
 
-            <div class="brand-showcase">
-              <div class="academic-badge">
-                <span class="pulse-dot"></span>
-                <span>Fall 2026 Academic Portal</span>
-              </div>
-              <h2 class="showcase-headline">Next-Generation Student Experience.</h2>
-              <p class="showcase-desc">
-                Streamlined course registration with live collision prevention, transparent academic performance tracking, and instant schedule management tailored for university excellence.
-              </p>
+          <h1 class="login-card-title">IUT SIS Portal</h1>
+          <p class="login-card-sub">Please log in to continue</p>
 
-              <!-- Feature Pills -->
-              <div class="feature-pills">
-                <div class="feature-pill">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  <span>Live Collision Shield</span>
-                </div>
-                <div class="feature-pill">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-                  <span>Real-time GPA Analytics</span>
-                </div>
-                <div class="feature-pill">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                  <span>Interactive Routine</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="brand-footer">
-              <div class="trust-indicator">
-                <div class="avatar-stack">
-                  <span class="avatar-mini">M</span>
-                  <span class="avatar-mini">S</span>
-                  <span class="avatar-mini">A</span>
-                </div>
-                <span>Serving 4,200+ undergraduate & graduate engineers</span>
-              </div>
-            </div>
+          <!-- Validation Alert Box -->
+          <div id="login-alert" class="alert-box alert-danger hidden" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="login-alert-text">Invalid credentials. Please try again.</span>
           </div>
-        </div>
 
-        <!-- Right Form Panel (45%) -->
-        <div class="login-form-panel">
-          <div class="login-form-wrapper">
-            <!-- Theme Mode Switcher in Login -->
-            <div class="login-theme-bar">
-              <button type="button" class="btn-login-theme-toggle" id="theme-toggle-login" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
-                <svg class="theme-icon-sun hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <span class="theme-text-status">Dark Mode</span>
-              </button>
+          <!-- Login Form -->
+          <form id="login-form" novalidate>
+            <div class="form-group">
+              <label for="login-student-id">Student ID</label>
+              <input type="text" id="login-student-id" placeholder="e.g. 230042144" autocomplete="username" required>
+              <span class="field-error-msg" id="id-error" style="display:none; color:var(--color-danger); font-size:0.75rem; margin-top:4px;">Please enter your student ID.</span>
             </div>
 
-            <div class="form-header">
-              <div class="mobile-crest-display">
-                <div class="mini-crest-icon">SIS</div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <div style="position:relative; display:flex; align-items:center;">
+                <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" required>
+                <button type="button" class="btn-toggle-password" id="btn-toggle-pwd" aria-label="Toggle password visibility" style="position:absolute; right:10px; background:none; border:none; color:var(--text-muted); cursor:pointer;">
+                  <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
               </div>
-              <h2 class="welcome-heading">Welcome back</h2>
-              <p class="welcome-sub">Sign in to access your student portal and academic records</p>
+              <span class="field-error-msg" id="pwd-error" style="display:none; color:var(--color-danger); font-size:0.75rem; margin-top:4px;">Please enter your password.</span>
             </div>
 
-            <!-- Quick Demo Credentials Helper -->
-            <div class="demo-badge-bar" id="demo-badge-bar" title="Click to autofill student demo credentials">
-              <span class="badge-tag">Demo Mode</span>
-              <span class="badge-text">ID: <strong>230042144</strong> · Pass: <strong>Mahid123</strong> (Open Access)</span>
-              <button type="button" class="btn-demo-autofill" id="btn-autofill" aria-label="Autofill demo credentials">
-                Auto-fill
-              </button>
-            </div>
-
-            <!-- Validation Alert Box -->
-            <div id="login-alert" class="alert-box alert-danger hidden" role="alert">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span id="login-alert-text">Invalid student ID or password. Please try again.</span>
-            </div>
-
-            <!-- Form -->
-            <form id="login-form" novalidate>
-              <div class="form-group">
-                <label for="login-student-id">Student ID or University Email</label>
-                <div class="input-icon-wrapper">
-                  <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  <input type="text" id="login-student-id" placeholder="e.g. 230042144 or any ID/name" autocomplete="username" required>
-                </div>
-                <span class="field-error-msg" id="id-error">Please enter your student ID or email.</span>
-              </div>
-
-              <div class="form-group">
-                <label for="login-password">Password</label>
-                <div class="input-icon-wrapper">
-                  <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                  <input type="password" id="login-password" placeholder="Enter your password" autocomplete="current-password" required>
-                  <button type="button" class="btn-toggle-password" id="btn-toggle-pwd" aria-label="Toggle password visibility">
-                    <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  </button>
-                </div>
-                <span class="field-error-msg" id="pwd-error">Please enter your password.</span>
-              </div>
-
-              <div class="form-options-row">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="remember-me" checked>
-                  <span class="custom-checkbox"></span>
-                  <span class="checkbox-text">Remember me</span>
-                </label>
-                <a href="#" id="link-forgot-pwd" class="forgot-link">Forgot password?</a>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-submit-login">
-                <span class="btn-text">Sign In</span>
-                <div class="btn-spinner hidden" id="login-spinner"></div>
-              </button>
-            </form>
-
-            <div class="divider-row">
-              <span class="divider-line"></span>
-              <span class="divider-text">or continue with</span>
-              <span class="divider-line"></span>
-            </div>
-
-            <button type="button" class="btn btn-secondary btn-block btn-sso" id="btn-sso-login">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              <span>Sign in with University SSO</span>
+            <button type="submit" class="btn-signin-teal" id="btn-submit-login">
+              <span class="btn-text">Sign In</span>
+              <div class="btn-spinner hidden" id="login-spinner"></div>
             </button>
+          </form>
 
-            <div class="login-footer">
-              <p>Need assistance? <a href="#" id="link-helpdesk" class="helpdesk-link">Contact IT Helpdesk</a></p>
-              <span class="security-note">🔒 256-bit encrypted university connection</span>
-            </div>
+          <!-- Quick Demo Credentials Hint & Auto-Fill -->
+          <div class="demo-login-hint">
+            <span>Demo ID: <strong>230042144</strong></span>
+            <span>·</span>
+            <span>Pass: <strong>Mahid123</strong></span>
+            <span>·</span>
+            <button type="button" class="btn-autofill-link" id="btn-autofill" title="Autofill Nafian Nazat Mahid demo credentials">Auto-fill</button>
+          </div>
+
+          <div style="margin-top:24px; font-size:0.75rem; color:var(--text-muted); border-top:1px solid var(--border-color); padding-top:14px;">
+            Islamic University of Technology · Student Information System
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================= -->
-    <!-- LOGGED-IN PORTAL SHELL (Sidebar + Top bar + Dynamic Main)                 -->
+    <!-- LOGGED-IN PORTAL SHELL (Top Navigation Bar + Humanized Layout)             -->
     <!-- ========================================================================= -->
     <div id="portal-shell" class="portal-shell hidden">
-      <!-- Reusable Persistent Left Sidebar -->
-      <aside class="portal-sidebar" id="portal-sidebar">
-        <!-- Sidebar Brand -->
-        <div class="sidebar-brand">
-          <div class="sidebar-logo">
+      <!-- Horizontal Top Header Navigation (Matching classmate screenshot pattern) -->
+      <header class="portal-header" id="portal-header">
+        <div class="portal-header-inner">
+          <div class="portal-brand">
             <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
-              <rect width="44" height="44" rx="10" fill="#3730A3"/>
-              <path d="M22 8L34 15V23C34 29.5 29 35.5 22 37.5C15 35.5 10 29.5 10 23V15L22 8Z" fill="#4338CA" stroke="#818CF8" stroke-width="2"/>
+              <rect width="44" height="44" rx="10" fill="#0284c7"/>
+              <path d="M22 8L34 15V23C34 29.5 29 35.5 22 37.5C15 35.5 10 29.5 10 23V15L22 8Z" fill="#0369a1" stroke="#38bdf8" stroke-width="2"/>
               <path d="M22 15V29M17 20L22 15L27 20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="22" cy="22" r="2.5" fill="#10B981"/>
+              <circle cx="22" cy="22" r="2.5" fill="#38bdf8"/>
             </svg>
-          </div>
-          <div class="sidebar-brand-text">
-            <span class="brand-name">IUT SIS</span>
-            <span class="brand-badge">STUDENT PORTAL</span>
-          </div>
-        </div>
-
-        <!-- Navigation Menu -->
-        <nav class="sidebar-nav" aria-label="Main Navigation">
-          <div class="nav-section-title">ACADEMIC MENU</div>
-          <ul class="nav-list">
-            <li>
-              <button type="button" class="nav-item active" data-nav="dashboard" id="nav-dashboard">
-                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
-                <span class="nav-label">Dashboard</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="nav-item" data-nav="registration" id="nav-registration">
-                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10M12 14v4M10 16h4"/></svg>
-                <span class="nav-label">Registration</span>
-                <span class="nav-badge badge-amber" title="Registration open">Open</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="nav-item" data-nav="results" id="nav-results">
-                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-13h-7l2-5l-9 13h7z"/></svg>
-                <span class="nav-label">Results</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="nav-item" data-nav="routine" id="nav-routine">
-                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-                <span class="nav-label">Class Routine</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="nav-item" data-nav="profile" id="nav-profile">
-                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <span class="nav-label">Student Profile</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Sidebar Bottom Footer -->
-        <div class="sidebar-footer">
-          <!-- Mini Help / Status Card -->
-          <div class="sidebar-status-card">
-            <div class="status-indicator-dot"></div>
-            <div class="status-text-block">
-              <span class="status-title">Fall 2026 Active</span>
-              <span class="status-sub">Week 4 · Mid-terms Oct 18</span>
+            <div>
+              <span class="brand-portal-name">IUT SIS</span>
             </div>
           </div>
 
-          <!-- Logout Button -->
-          <button type="button" class="btn-logout" id="btn-logout" title="Sign out of student account">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            <span>Logout</span>
-          </button>
-        </div>
-      </aside>
+          <!-- Top Navigation Links -->
+          <nav class="portal-nav-bar" aria-label="Main Navigation">
+            <button type="button" class="nav-item active" data-nav="dashboard" id="nav-dashboard">Dashboard</button>
+            <button type="button" class="nav-item" data-nav="registration" id="nav-registration">Courses</button>
+            <button type="button" class="nav-item" data-nav="results" id="nav-results">Transcript</button>
+            <button type="button" class="nav-item" data-nav="routine" id="nav-routine">Schedule</button>
+            <button type="button" class="nav-item" data-nav="profile" id="nav-profile">Profile</button>
+          </nav>
 
-      <!-- Main Layout Body -->
-      <div class="portal-body">
-        <!-- Reusable Persistent Top Bar -->
-        <header class="portal-topbar" id="portal-topbar">
-          <div class="topbar-left">
-            <!-- Mobile Menu Toggle -->
-            <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation drawer">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <!-- Top Right Actions -->
+          <div class="portal-nav-right">
+            <!-- Theme Toggle Button -->
+            <button type="button" class="btn-theme-toggle" id="theme-toggle-topbar" aria-label="Toggle Dark / Light Mode" title="Toggle Theme">
+              <svg class="theme-icon-sun hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
 
-            <!-- Global Search Bar -->
-            <div class="topbar-search">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" id="global-search-input" placeholder="Search courses, instructors, routines (Press ⌘K)..." autocomplete="off">
-              <span class="search-kbd">⌘K</span>
-            </div>
-          </div>
-
-          <div class="topbar-right">
-            <!-- Semester Selector Dropdown -->
-            <div class="semester-selector-wrapper">
-              <span class="selector-label">Term:</span>
-              <select id="global-semester-select" class="semester-select" aria-label="Select active semester">
-                <option value="Fall 2026" selected>Fall 2026 (Active)</option>
-                <option value="Spring 2026">Spring 2026</option>
-                <option value="Fall 2025">Fall 2025</option>
-                <option value="Spring 2025">Spring 2025</option>
-              </select>
-            </div>
-
-            <!-- Notification Bell with Drawer Toggle -->
-            <div class="notification-wrapper">
+            <!-- Notifications Bell -->
+            <div class="notification-wrapper" style="position:relative;">
               <button type="button" class="btn-notification" id="btn-notifications" aria-label="Open notifications" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                <span class="notification-badge" id="notif-count">3</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notification-badge" id="notif-count">2</span>
               </button>
 
-              <!-- Notifications Dropdown Flyout -->
+              <!-- Notifications Dropdown -->
               <div class="notifications-dropdown hidden" id="notifications-dropdown">
                 <div class="notif-header">
                   <h4 class="notif-title">Notifications</h4>
@@ -304,7 +144,7 @@
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                     </div>
                     <div class="notif-text">
-                      <p class="notif-msg"><strong>Course Registration Deadline:</strong> Fall 2026 registration closes in 3 days.</p>
+                      <p class="notif-msg"><strong>Semester Registration:</strong> 7th Semester batch curriculum confirmed (18.0 credits).</p>
                       <span class="notif-time">1 hour ago · Registrar Office</span>
                     </div>
                   </div>
@@ -313,362 +153,112 @@
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                     </div>
                     <div class="notif-text">
-                      <p class="notif-msg"><strong>Routine Update:</strong> CSE 4702 Lab shifted to Software Lab 3.</p>
+                      <p class="notif-msg"><strong>Routine Notice:</strong> CSE 4702 Sessional moved to Software Lab 3.</p>
                       <span class="notif-time">3 hours ago · Dept of CSE</span>
                     </div>
                   </div>
-                  <div class="notif-item unread" data-action="results">
-                    <div class="notif-icon-box emerald">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="notif-text">
-                      <p class="notif-msg"><strong>Grades Published:</strong> Spring 2026 final transcripts available.</p>
-                      <span class="notif-time">1 day ago · Controller of Exams</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="notif-footer">
-                  <span class="notif-footer-text">Synced with campus notification service</span>
                 </div>
               </div>
             </div>
 
-            <!-- Theme Toggle Button (Light / Dark) -->
-            <button type="button" class="btn-theme-toggle" id="theme-toggle-topbar" aria-label="Toggle Dark / Light Mode" title="Toggle Theme">
-              <svg class="theme-icon-sun hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-              <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <!-- Profile Avatar / Name Link -->
+            <button type="button" class="topbar-user-profile" id="topbar-profile-btn" title="Go to Student Profile" style="cursor:pointer; background:none; border:none; display:flex; align-items:center; gap:8px;">
+              <span class="user-avatar-initials" style="width:32px; height:32px; border-radius:50%; background:var(--bg-subtle); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8125rem; border:1px solid var(--border-color); color:var(--text-primary);">NM</span>
+              <span class="topbar-user-name" style="font-size:0.875rem; font-weight:600; color:var(--text-primary);">Nafian Mahid</span>
             </button>
 
-            <!-- Student Profile Avatar & Quick Link -->
-            <button type="button" class="topbar-user-profile" id="topbar-profile-btn" title="Go to Student Profile">
-              <div class="avatar-ring">
-                <span class="user-avatar-initials">MN</span>
-              </div>
-              <div class="topbar-user-details">
-                <span class="topbar-user-name">Mahid Nazat</span>
-                <span class="topbar-user-sub" id="topbar-user-sub">CSE · 230042144</span>
-              </div>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            <!-- Sign Out Button -->
+            <button type="button" class="btn-logout-link" id="btn-logout" title="Sign out of student account">
+              Sign Out
             </button>
           </div>
-        </header>
+        </div>
+      </header>
 
-        <!-- Dynamic Main Content Views -->
+      <!-- Main Layout Body Container -->
+      <div class="portal-content-wrap">
         <main class="portal-main" id="portal-main-area">
 
           <!-- ================================================================= -->
-          <!-- SCREEN 2: STUDENT DASHBOARD                                       -->
+          <!-- SCREEN 2: STUDENT DASHBOARD (Humanized 2-Column Layout)           -->
           <!-- ================================================================= -->
           <div id="screen-dashboard" class="screen-view">
-            <!-- Welcome Banner -->
-            <div class="welcome-banner">
-              <div class="welcome-text-block">
-                <div class="welcome-badge-line">
-                  <span class="badge badge-indigo">B.Sc. in CSE · 7th Semester</span>
-                  <span class="term-tag">Fall 2026</span>
-                </div>
-                <h2 class="welcome-title">Good morning, Mahid 👋</h2>
-                <p class="welcome-subtitle">
-                  Today is <span id="dashboard-current-date">Wednesday, Sep 16, 2026</span>. You have 3 lectures scheduled today.
+            <div class="dashboard-human-layout">
+              <!-- Left Column: Student Bio Sidebar (Inspired by classmate reference screenshot) -->
+              <aside class="dashboard-student-sidebar">
+                <div class="student-avatar-circle">NM</div>
+                <h2 class="student-name">Nafian Nazat Mahid</h2>
+                <span class="student-role">ID: 230042144</span>
+                
+                <p class="student-bio">
+                  Undergraduate student at Islamic University of Technology (IUT), Department of Computer Science and Engineering. Fixed curriculum, Batch 2023.
                 </p>
-              </div>
-              <div class="welcome-banner-actions">
-                <button type="button" class="btn btn-white-outline" id="dash-btn-quick-routine">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                  Today's Schedule
-                </button>
-                <button type="button" class="btn btn-emerald" id="dash-btn-quick-reg">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                  Course Registration
-                </button>
-              </div>
-            </div>
 
-            <!-- Actionable Registration Alert Banner -->
-            <div class="alert-banner-amber">
-              <div class="alert-amber-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              </div>
-              <div class="alert-amber-content">
-                <div class="alert-amber-title">Course Registration Closes in 3 Days!</div>
-                <p class="alert-amber-desc">
-                  Final deadline: <strong>Sep 20, 2026, 11:59 PM</strong>. Ensure you have enrolled in 12–18 credits with zero timetable collisions.
-                </p>
-              </div>
-              <div class="alert-amber-cta">
-                <button type="button" class="btn btn-amber-solid" id="btn-dash-register-now">
-                  Register Now
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-            </div>
+                <div class="student-meta-box">
+                  <div class="meta-line"><span>Department:</span> <strong>CSE</strong></div>
+                  <div class="meta-line"><span>Batch:</span> <strong>2023</strong></div>
+                  <div class="meta-line"><span>Curriculum:</span> <strong>Closed Credit</strong></div>
+                  <div class="meta-line"><span>Semester:</span> <strong>7th (Year 4)</strong></div>
+                  <div class="meta-line"><span>Section:</span> <strong>7A</strong></div>
+                  <div class="meta-line"><span>Status:</span> <strong style="color:var(--color-success);">Active Regular</strong></div>
+                </div>
+              </aside>
 
-            <!-- Row of 4 Stat Cards -->
-            <div class="stat-cards-grid">
-              <!-- Stat 1: CGPA -->
-              <div class="stat-card" id="card-stat-cgpa" title="Click to view full academic transcript">
-                <div class="stat-card-header">
-                  <span class="stat-label">Cumulative CGPA</span>
-                  <div class="stat-icon-wrapper indigo">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <!-- Right Column: Dashboard Main Pane -->
+              <div class="dashboard-content-pane">
+                <div class="dash-section">
+                  <h1 class="dash-title">Academic Dashboard</h1>
+                  <p class="dash-welcome">Welcome back, Nafian. Here is your current academic progress for Fall 2026.</p>
+                </div>
+
+                <!-- Academic Summary Section (IUT Closed Credit Model) -->
+                <div class="dash-section">
+                  <h3 class="dash-section-title">Academic Summary</h3>
+                  <ul class="academic-summary-list">
+                    <li><strong>Program:</strong> Bachelor of Science in Computer Science and Engineering</li>
+                    <li><strong>Current Semester:</strong> 7th Semester (4th Academic Year, 1st Term)</li>
+                    <li><strong>Academic System:</strong> IUT Closed Credit (4 Academic Years · 8 Semesters total)</li>
+                    <li><strong>Cumulative CGPA:</strong> 3.62 / 4.00 (Dean's Honor Roll)</li>
+                    <li><strong>Credits Completed:</strong> 108.5 / 144.0 Prescribed Credits</li>
+                    <li><strong>Current Term Load:</strong> 18.0 Credits (6 Courses Prescribed for Batch 2023)</li>
+                    <li><strong>Academic Advisor:</strong> Farzana Tabassum, Lecturer, Dept. of CSE</li>
+                  </ul>
+                </div>
+
+                <!-- Today's Classes Widget -->
+                <div class="dash-section">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border-color);">
+                    <h3 class="dash-section-title" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">Today's Classes (Wednesday)</h3>
+                    <button type="button" class="btn-autofill-link" id="dash-btn-quick-routine">Full Routine →</button>
                   </div>
-                </div>
-                <div class="stat-value-group">
-                  <div class="stat-primary-value">3.62 <span class="stat-denom">/ 4.00</span></div>
-                  <div class="stat-trend trend-positive">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-                    <span>+0.05 vs Spring '26</span>
-                  </div>
-                </div>
-                <div class="stat-footer-text">Dean's Honor Roll · Top 12% in Dept</div>
-              </div>
 
-              <!-- Stat 2: Credits Completed -->
-              <div class="stat-card" id="card-stat-credits">
-                <div class="stat-card-header">
-                  <span class="stat-label">Credits Completed</span>
-                  <div class="stat-icon-wrapper emerald">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  </div>
-                </div>
-                <div class="stat-value-group">
-                  <div class="stat-primary-value">96 <span class="stat-denom">/ 144</span></div>
-                  <span class="stat-pill pill-emerald">66.7% Done</span>
-                </div>
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill fill-emerald" style="width: 66.7%;"></div>
-                </div>
-                <div class="stat-footer-text">48 credits remaining to graduate</div>
-              </div>
-
-              <!-- Stat 3: Current Semester Courses -->
-              <div class="stat-card" id="card-stat-courses">
-                <div class="stat-card-header">
-                  <span class="stat-label">Enrolled Courses</span>
-                  <div class="stat-icon-wrapper amber">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
-                  </div>
-                </div>
-                <div class="stat-value-group">
-                  <div class="stat-primary-value">5 <span class="stat-denom">Courses</span></div>
-                  <span class="stat-pill pill-indigo">15.0 Credits</span>
-                </div>
-                <div class="stat-sub-info">
-                  <span class="bullet-dot green"></span>
-                  <span>100% verified timetable slots</span>
-                </div>
-                <div class="stat-footer-text">Registration status: Approved</div>
-              </div>
-
-              <!-- Stat 4: Attendance -->
-              <div class="stat-card" id="card-stat-attendance">
-                <div class="stat-card-header">
-                  <span class="stat-label">Average Attendance</span>
-                  <div class="stat-icon-wrapper purple">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  </div>
-                </div>
-                <div class="stat-value-group">
-                  <div class="stat-primary-value">91.4%</div>
-                  <span class="stat-pill pill-emerald">Eligible</span>
-                </div>
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill fill-emerald" style="width: 91.4%;"></div>
-                </div>
-                <div class="stat-footer-text">Above mandatory 85% requirement</div>
-              </div>
-            </div>
-
-            <!-- Dashboard 3-Column Content Widgets -->
-            <div class="dashboard-widgets-grid">
-              <!-- Widget 1: Today's Classes -->
-              <div class="dashboard-card widget-classes">
-                <div class="dashboard-card-header">
-                  <div class="header-title-box">
-                    <div class="icon-round indigo">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+                    <div style="padding:14px; background:var(--bg-subtle); border-radius:8px; border:1px solid var(--border-color);">
+                      <div style="font-size:0.75rem; color:#0ea5e9; font-weight:700;">08:30 AM – 10:00 AM</div>
+                      <div style="font-weight:700; font-size:0.9375rem; margin-top:2px;">CSE 4701 · AI</div>
+                      <div style="font-size:0.8125rem; color:var(--text-secondary); margin-top:2px;">Room 302 · Prof. Dr. Hasan</div>
                     </div>
-                    <div>
-                      <h3 class="widget-title">Today's Schedule</h3>
-                      <span class="widget-sub">Wednesday · 3 Classes Scheduled</span>
+                    <div style="padding:14px; background:var(--bg-subtle); border-radius:8px; border:1px solid var(--border-color);">
+                      <div style="font-size:0.75rem; color:#0ea5e9; font-weight:700;">10:15 AM – 12:45 PM</div>
+                      <div style="font-weight:700; font-size:0.9375rem; margin-top:2px;">CSE 4702 · AI Lab</div>
+                      <div style="font-size:0.8125rem; color:var(--text-secondary); margin-top:2px;">Software Lab 3 · Lect. Farhana & TA</div>
                     </div>
-                  </div>
-                  <button type="button" class="btn-text-link" id="btn-dash-view-routine">View Full Routine →</button>
-                </div>
-
-                <div class="classes-schedule-list">
-                  <!-- Class item 1 -->
-                  <div class="class-item-card status-active">
-                    <div class="class-time-badge">
-                      <span class="time-main">08:30 AM</span>
-                      <span class="time-sub">10:00 AM</span>
+                    <div style="padding:14px; background:var(--bg-subtle); border-radius:8px; border:1px solid var(--border-color);">
+                      <div style="font-size:0.75rem; color:#0ea5e9; font-weight:700;">02:00 PM – 03:30 PM</div>
+                      <div style="font-weight:700; font-size:0.9375rem; margin-top:2px;">HUM 4715 · Ethics</div>
+                      <div style="font-size:0.8125rem; color:var(--text-secondary); margin-top:2px;">Room 405 · Dr. Rahman</div>
                     </div>
-                    <div class="class-item-divider"></div>
-                    <div class="class-item-info">
-                      <div class="class-code-row">
-                        <span class="class-code">CSE 4701</span>
-                        <span class="badge badge-emerald">In Progress</span>
-                      </div>
-                      <h4 class="class-name">Artificial Intelligence</h4>
-                      <div class="class-meta">
-                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 302 (Academic Bldg 1)</span>
-                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Prof. Dr. Hasan</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Class item 2 -->
-                  <div class="class-item-card">
-                    <div class="class-time-badge">
-                      <span class="time-main">10:15 AM</span>
-                      <span class="time-sub">12:45 PM</span>
-                    </div>
-                    <div class="class-item-divider"></div>
-                    <div class="class-item-info">
-                      <div class="class-code-row">
-                        <span class="class-code">CSE 4702</span>
-                        <span class="badge badge-gray">Upcoming</span>
-                      </div>
-                      <h4 class="class-name">Artificial Intelligence Sessional</h4>
-                      <div class="class-meta">
-                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Software Lab 3</span>
-                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Lect. Farhan & TA</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Class item 3 -->
-                  <div class="class-item-card">
-                    <div class="class-time-badge">
-                      <span class="time-main">02:00 PM</span>
-                      <span class="time-sub">03:30 PM</span>
-                    </div>
-                    <div class="class-item-divider"></div>
-                    <div class="class-item-info">
-                      <div class="class-code-row">
-                        <span class="class-code">HUM 4715</span>
-                        <span class="badge badge-gray">Upcoming</span>
-                      </div>
-                      <h4 class="class-name">Engineering Ethics & Professionalism</h4>
-                      <div class="class-meta">
-                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 405 (Auditorium Bldg)</span>
-                        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Dr. Rahman</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Widget 2: Recent Results Summary -->
-              <div class="dashboard-card widget-results">
-                <div class="dashboard-card-header">
-                  <div class="header-title-box">
-                    <div class="icon-round emerald">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-13h-7l2-5l-9 13h7z"/></svg>
-                    </div>
-                    <div>
-                      <h3 class="widget-title">Recent Academic Results</h3>
-                      <span class="widget-sub">Spring 2026 Semester Performance</span>
-                    </div>
-                  </div>
-                  <button type="button" class="btn-text-link" id="btn-dash-view-results">View All →</button>
-                </div>
-
-                <div class="semester-summary-pill-box">
-                  <div class="pill-stat">
-                    <span class="pill-label">Term GPA</span>
-                    <span class="pill-val emerald-text">3.82</span>
-                  </div>
-                  <div class="pill-stat-divider"></div>
-                  <div class="pill-stat">
-                    <span class="pill-label">Credits</span>
-                    <span class="pill-val">19.5 Cr</span>
-                  </div>
-                  <div class="pill-stat-divider"></div>
-                  <div class="pill-stat">
-                    <span class="pill-label">Status</span>
-                    <span class="pill-val">Passed</span>
                   </div>
                 </div>
 
-                <div class="recent-grades-table">
-                  <div class="grade-row">
-                    <div class="grade-course">
-                      <span class="code">CSE 4601</span>
-                      <span class="title">Distributed Systems & Cloud</span>
-                    </div>
-                    <div class="grade-credits">3.0 Cr</div>
-                    <div class="grade-badge badge-aplus">A+ (4.00)</div>
-                  </div>
-                  <div class="grade-row">
-                    <div class="grade-course">
-                      <span class="code">CSE 4603</span>
-                      <span class="title">Compiler Design</span>
-                    </div>
-                    <div class="grade-credits">3.0 Cr</div>
-                    <div class="grade-badge badge-a">A (3.75)</div>
-                  </div>
-                  <div class="grade-row">
-                    <div class="grade-course">
-                      <span class="code">CSE 4604</span>
-                      <span class="title">Compiler Design Sessional</span>
-                    </div>
-                    <div class="grade-credits">1.5 Cr</div>
-                    <div class="grade-badge badge-aplus">A+ (4.00)</div>
-                  </div>
-                  <div class="grade-row">
-                    <div class="grade-course">
-                      <span class="code">MATH 4641</span>
-                      <span class="title">Numerical Methods & Analysis</span>
-                    </div>
-                    <div class="grade-credits">3.0 Cr</div>
-                    <div class="grade-badge badge-aminus">A- (3.50)</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Widget 3: Notices & Campus Announcements -->
-              <div class="dashboard-card widget-notices">
-                <div class="dashboard-card-header">
-                  <div class="header-title-box">
-                    <div class="icon-round amber">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                    </div>
-                    <div>
-                      <h3 class="widget-title">Official Notices</h3>
-                      <span class="widget-sub">University Administration</span>
-                    </div>
-                  </div>
-                  <span class="badge badge-amber">4 Updates</span>
-                </div>
-
-                <div class="notices-scroll-list">
-                  <div class="notice-item">
-                    <div class="notice-tag-row">
-                      <span class="badge badge-indigo">Exam Schedule</span>
-                      <span class="notice-date">2 hours ago</span>
-                    </div>
-                    <h4 class="notice-heading">Mid-term Examination Routine — Fall 2026</h4>
-                    <p class="notice-snippet">The Controller of Examinations has published the revised mid-term routine. Please check your routine tab.</p>
-                  </div>
-
-                  <div class="notice-item">
-                    <div class="notice-tag-row">
-                      <span class="badge badge-emerald">Research</span>
-                      <span class="notice-date">Yesterday</span>
-                    </div>
-                    <h4 class="notice-heading">Undergraduate Thesis Defense Slots Open</h4>
-                    <p class="notice-snippet">7th & 8th semester students must submit their initial chapter drafts to their designated supervisors by Sep 30.</p>
-                  </div>
-
-                  <div class="notice-item">
-                    <div class="notice-tag-row">
-                      <span class="badge badge-gray">Library</span>
-                      <span class="notice-date">3 days ago</span>
-                    </div>
-                    <h4 class="notice-heading">Central Library Book Renewal & Digital Access</h4>
-                    <p class="notice-snippet">IEEE Xplore and Springer digital credentials have been renewed for the 2026-2027 academic session.</p>
-                  </div>
+                <!-- Quick Action Buttons -->
+                <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+                  <button type="button" class="btn-signin-teal" style="width:auto; padding:10px 20px;" id="btn-dash-register-now">
+                    View 7th Semester Courses
+                  </button>
+                  <button type="button" class="btn-autofill-link" style="padding:10px 18px; font-size:0.875rem;" id="btn-dash-view-results">
+                    View Complete Academic Transcript
+                  </button>
                 </div>
               </div>
             </div>
@@ -1317,7 +907,7 @@
                     </button>
                   </div>
 
-                  <h3 class="profile-name" id="display-name">Mahid Nazat</h3>
+                  <h3 class="profile-name" id="display-name">Nafian Nazat Mahid</h3>
                   <span class="profile-dept">Computer Science & Engineering</span>
                   <div class="profile-id-pill">
                     <span>ID: </span><strong id="display-student-id">230042144</strong>
