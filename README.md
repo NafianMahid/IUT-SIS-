@@ -7,7 +7,6 @@
 ### 👨‍🎓 Submitted By
 **Nafian Nazat Mahid**  
 Student ID: **230042144**  
-Program: B.Sc. in Computer Science and Engineering (CSE)  
 Islamic University of Technology (IUT)
 
 ### 👩‍🏫 Submitted To
